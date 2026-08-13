@@ -1,0 +1,342 @@
+<title>Checking an AI's black holes</title>
+<style>
+  :root {
+    --paper: #EDEFF2;
+    --paper-2: #E3E7ED;
+    --ink: #16233A;
+    --ink-soft: #4A5670;
+    --rule: #C3CAD6;
+    --teal: #0E7C7B;
+    --rust: #B3402A;
+    --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725;
+      --paper-2: #18202F;
+      --ink: #E4E8F0;
+      --ink-soft: #9AA6BE;
+      --rule: #2C3850;
+      --teal: #3FD0CD;
+      --rust: #EE7A5F;
+      --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--ink-soft); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(290px, 0.95fr);
+          gap: clamp(24px, 4vw, 46px); align-items: center; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+
+  .answer { border-left: 3px solid var(--teal); padding: 5px 0 5px 16px; margin-top: 6px;
+            font-family: var(--display); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.34; }
+
+  .readings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card { border: 1px solid var(--rule); border-radius: 3px; padding: 18px 20px 20px;
+          display: flex; flex-direction: column; gap: 9px; background: var(--paper-2); }
+  .card .num { font-family: var(--data); font-size: 32px; font-variant-numeric: tabular-nums;
+               line-height: 1; color: var(--teal); }
+  .card .against { font-family: var(--data); font-size: 12px; color: var(--ink-soft);
+                   font-variant-numeric: tabular-nums; }
+  .chip { align-self: flex-start; font-family: var(--data); font-size: 10.5px; letter-spacing: 0.1em;
+          text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--teal);
+          color: var(--teal); border-radius: 2px; }
+
+  .steps { display: flex; flex-direction: column; }
+  .step { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 15px 0;
+          border-top: 1px solid var(--rule); }
+  .step:last-child { border-bottom: 1px solid var(--rule); }
+  .step .when { font-family: var(--data); font-size: 12px; color: var(--indigo);
+                letter-spacing: 0.04em; padding-top: 2px; }
+  .step .what { max-width: 68ch; }
+  @media (max-width: 560px) { .step { grid-template-columns: 1fr; gap: 4px; } }
+
+  .caveat { border: 1px solid var(--rust); border-radius: 3px; padding: 18px 22px 20px; }
+  .caveat h2 { color: var(--rust); }
+  .caveat ul { margin: 6px 0 0; padding-left: 20px; }
+  .caveat li { margin-bottom: 7px; max-width: 66ch; }
+
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 34px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  figcaption { font-size: 13px; color: var(--ink-soft); max-width: 54ch; }
+  svg { width: 100%; height: auto; overflow: visible; }
+
+  .s-ink { stroke: var(--ink); fill: none; }
+  .s-rule { stroke: var(--rule); fill: none; }
+  .s-dash { stroke: var(--ink); fill: none; stroke-dasharray: 5 4; }
+  .s-teal { stroke: var(--teal); fill: none; }
+  .hatch-line { stroke: var(--indigo); stroke-opacity: 0.3; }
+  .dot-in { fill: var(--ink); }
+  .dot-out { fill: none; stroke: var(--teal); stroke-width: 1.9; }
+  .bar-teal { fill: var(--teal); }
+  .bar-rust { fill: var(--rust); }
+  .lbl { font-family: var(--data); font-size: 10px; fill: var(--ink); }
+  .lbl-soft { font-family: var(--data); font-size: 10px; fill: var(--ink-soft); }
+  .lbl-teal { font-family: var(--data); font-size: 10px; fill: var(--teal); }
+  .lbl-name { font-family: var(--body); font-size: 12px; fill: var(--ink); }
+  .lbl-num { font-family: var(--data); font-size: 12px; fill: var(--ink);
+             font-variant-numeric: tabular-nums; }
+  .lbl-num-rust { font-family: var(--data); font-size: 12px; fill: var(--rust);
+                  font-variant-numeric: tabular-nums; }
+
+  .foot { font-size: 13px; color: var(--ink-soft); max-width: 80ch; }
+  .foot code { font-family: var(--data); font-size: 12.5px; }
+  b { font-weight: 600; }
+</style>
+
+<div class="wrap"><div class="col">
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Independent verification &middot; August 2026</div>
+      <h1>An AI said it found new black holes. I built my own instrument and checked.</h1>
+      <p class="lede">A 2026 physics paper claims a neural network discovered spacetimes nobody had
+      written down before. Nobody had checked it from the outside. I did, on a desktop computer, in
+      about a day.</p>
+      <div class="answer">Their method holds up under my instrument. Their recipe is also
+      unstable: I trained it five times, changing nothing but a random seed, and only two runs
+      out of five came out as black holes.</div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 360 386" role="img" aria-labelledby="dt dd">
+        <title id="dt">Where the horizon sits</title>
+        <desc id="dd">Schematic causal diagram. Light travels along 45 degree lines. The textbook
+        Schwarzschild horizon is drawn dashed; the horizon measured in the candidate spacetime lies
+        further out, so its trapped region is larger.</desc>
+        <defs>
+          <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)"
+                   patternUnits="userSpaceOnUse">
+            <line class="hatch-line" x1="0" y1="0" x2="0" y2="7" stroke-width="1"/>
+          </pattern>
+        </defs>
+
+        <polygon points="145,265 275,135 180,40 40,170" fill="url(#hatch)"/>
+        <polygon class="s-ink" points="180,40 320,170 180,300 40,170" stroke-width="1.3"/>
+
+        <line class="s-dash" x1="113" y1="237" x2="247" y2="103" stroke-width="1.4"/>
+        <line class="s-teal" x1="145" y1="265" x2="275" y2="135" stroke-width="2.2"/>
+
+        <text class="lbl" x="150" y="112" text-anchor="middle">no escape</text>
+        <text class="lbl-soft" x="248" y="244" text-anchor="middle">light escapes</text>
+
+        <text class="lbl-soft" x="180" y="26" text-anchor="middle">later in time</text>
+        <text class="lbl-soft" x="326" y="306" text-anchor="end">further out in space &rarr;</text>
+
+        <line class="s-dash" x1="40" y1="344" x2="72" y2="344" stroke-width="1.4"/>
+        <text class="lbl" x="82" y="348">horizon of the textbook black hole</text>
+        <line class="s-teal" x1="40" y1="368" x2="72" y2="368" stroke-width="2.2"/>
+        <text class="lbl-teal" x="82" y="372">horizon I measured in the candidate</text>
+      </svg>
+      <figcaption>Schematic. Light always travels along the 45&deg; diagonals, so anything above the
+      horizon line can never get back out &mdash; that shaded wedge is what makes an object a black
+      hole. My measurements put the candidate's horizon further out than the textbook one, which is
+      how I know it is not a relabelled Schwarzschild solution. The underlying numbers are in the
+      repository.</figcaption>
+    </figure>
+  </section>
+
+  <hr class="hair">
+
+  <section>
+    <h2>Three things a black hole has to pass</h2>
+    <p>All three must hold at once. I wrote separate code for each, sharing nothing with the
+    authors' pipeline, and calibrated each against textbook answers before pointing it at their
+    work.</p>
+    <div class="readings">
+      <div class="card">
+        <span class="chip">2 of 5 runs</span>
+        <h3>Is spacetime empty there?</h3>
+        <span class="num">0.228</span>
+        <span class="against">best run &middot; limit 0.286 &middot; my textbook copy 0.123</span>
+        <p class="small">The limit was computed, committed and tagged in version control
+        <b>before</b> any candidate existed, so it could not be moved to fit the answer. Three of
+        the five runs miss it, up to 1.100.</p>
+      </div>
+      <div class="card">
+        <span class="chip">5 of 5 runs</span>
+        <h3>Is the geometry genuinely different?</h3>
+        <span class="num">2.27&ndash;2.58</span>
+        <span class="against">a Schwarzschild black hole reads exactly 1</span>
+        <p class="small">The same code returns 1.0000000000000004 on the textbook solution and
+        1.0000017 on a network trained to imitate it. Every run lands far outside that noise, and
+        they cluster tightly.</p>
+      </div>
+      <div class="card">
+        <span class="chip">5 of 5 runs</span>
+        <h3>Is there a point of no return?</h3>
+        <span class="num">11 of 12</span>
+        <span class="against">probe points inside a trapped region</span>
+        <p class="small">Its horizon sits at a measured distance of 0.63 where the textbook one
+        would be at 0.10, pinned down to &plusmn;0.003. On the same test both control models
+        reproduce the known horizon exactly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="two">
+    <figure>
+      <svg viewBox="0 0 470 250" role="img" aria-labelledby="st sd">
+        <title id="st">Five training runs of the same recipe</title>
+        <desc id="sd">Independent vacuum residual for five candidates that differ only in random
+        seed: 0.228, 0.233, 0.317, 0.915 and 1.100, against a pass limit of 0.286. Two pass.
+        The training loss each run reported is shown alongside and does not follow the same
+        order.</desc>
+        <line class="s-rule" x1="170" y1="16" x2="170" y2="196" stroke-width="1"/>
+        <line class="s-dash" x1="235" y1="20" x2="235" y2="196" stroke-width="1.3"/>
+
+        <text class="lbl-name" x="14" y="42">my textbook copy</text>
+        <rect class="bar-teal" x="170" y="30" width="28" height="16"/>
+        <text class="lbl-num" x="206" y="43">0.123</text>
+
+        <text class="lbl-name" x="14" y="70">seed 126</text>
+        <rect class="bar-teal" x="170" y="58" width="52" height="16"/>
+        <text class="lbl-num" x="230" y="71">0.228</text>
+        <text class="lbl-soft" x="298" y="71">its loss 0.0132</text>
+
+        <text class="lbl-name" x="14" y="98">seed 124</text>
+        <rect class="bar-teal" x="170" y="86" width="53" height="16"/>
+        <text class="lbl-num" x="230" y="99">0.233</text>
+        <text class="lbl-soft" x="298" y="99">its loss 0.0118</text>
+
+        <text class="lbl-name" x="14" y="126">seed 125</text>
+        <rect class="bar-rust" x="170" y="114" width="72" height="16"/>
+        <text class="lbl-num-rust" x="250" y="127">0.317</text>
+        <text class="lbl-soft" x="298" y="127">its loss 0.0110</text>
+
+        <text class="lbl-name" x="14" y="154">seed 123</text>
+        <rect class="bar-rust" x="170" y="142" width="208" height="16"/>
+        <text class="lbl-num-rust" x="386" y="155">0.915</text>
+
+        <text class="lbl-name" x="14" y="182">seed 127</text>
+        <rect class="bar-rust" x="170" y="170" width="250" height="16"/>
+        <text class="lbl-num-rust" x="428" y="183">1.100</text>
+
+        <text class="lbl" x="14" y="216">dashed line: pass limit 0.286, fixed before any of these
+        runs existed</text>
+        <text class="lbl-soft" x="14" y="238">seed 127 reported the lowest loss of the five and has
+        the worst geometry</text>
+      </svg>
+      <figcaption>Five runs, identical code and settings, only the random seed differs. Two land
+      inside the limit, three do not, and the worst is nearly five times the best. The number each
+      run reports about itself, its training loss, varies by just 21 percent and in this sample runs
+      the wrong way round.</figcaption>
+    </figure>
+
+    <div>
+      <h2>The part that surprised me</h2>
+      <p>The three properties are not equally reliable. The exotic shape and the trapped region
+      showed up in <b>all five</b> runs, tightly clustered. The plain requirement that spacetime be
+      empty &mdash; the actual Einstein equation &mdash; held in only <b>two of five</b>.</p>
+      <p>Worse, the number these networks report about themselves does not see it. Training loss
+      barely moved across the five runs (21 percent) while the real geometric error moved by a
+      factor of five, and the run that looked best by its own loss was the worst when measured from
+      outside &mdash; the ranking is reversed, with a rank correlation of &minus;0.90. I went looking
+      for this only after seeing the sweep, on five runs, so I file it as a lead rather than a
+      result. It is also exactly the failure mode an outside instrument exists to catch.</p>
+      <p>That is the argument for this kind of audit in one paragraph: when a network reports on its
+      own success, someone has to check with a different ruler.</p>
+    </div>
+  </section>
+
+  <hr class="hair">
+
+  <section>
+    <h2>How one person did this in a day</h2>
+    <p>An AI agent wrote the code and ran the experiments. My job was the part that decides whether
+    any of it is worth anything: what to ask, what counts as proof, and what we are not allowed to
+    claim.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="when">hour 0</div>
+        <div class="what"><h3>Set one rule above all others</h3>
+        The AI is never allowed to mark its own scientific work as verified. A stage passes only
+        when deterministic checks pass against files whose checksums are recorded. That became a
+        hard constraint of the system, not a preference.</div>
+      </div>
+      <div class="step">
+        <div class="when">hour 1</div>
+        <div class="what"><h3>Refused a comfortable answer</h3>
+        Their reported error was 0.00000000016; my instrument said 0.0000033 on the same network,
+        four orders of magnitude apart. I demanded that be explained with measurements rather than
+        prose. It was: their number is squared where mine is not, and on a common scale the two
+        agree to 0.7 percent.</div>
+      </div>
+      <div class="step">
+        <div class="when">hour 9</div>
+        <div class="what"><h3>Gave up the graphics card, on evidence</h3>
+        I approved installing GPU support. Measured, it ran ten times slower than the processor,
+        because this physics needs double precision that consumer graphics cards deliberately
+        cripple. We recorded that and went back to the processor overnight.</div>
+      </div>
+      <div class="step">
+        <div class="when">hour 14</div>
+        <div class="what"><h3>Froze the goalposts before looking</h3>
+        The pass limits were derived from the textbook baseline, committed and tagged in version
+        control before a single candidate had been trained. Nobody can accuse us of tuning the test
+        to the result, because the timestamps are public.</div>
+      </div>
+      <div class="step">
+        <div class="when">hour 22</div>
+        <div class="what"><h3>Wrote to the authors first</h3>
+        Their trained models were never published, so everything here is my own retraining of their
+        configuration. I asked them for the real ones and offered to send them all my results before
+        anything becomes public. That letter went from my own mailbox.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="caveat">
+    <h2>What this is not</h2>
+    <ul>
+      <li><b>Not a discovery.</b> The paper's training objective explicitly rewards all three
+      properties I measured. Finding them confirms the method does what it was built to do; it does
+      not prove that a new exact solution of Einstein's equations exists.</li>
+      <li><b>Not a verdict on their results.</b> Their trained models are unpublished, so I tested
+      their recipe, not their output. That distinction stays in every sentence.</li>
+      <li><b>Not peer-reviewed.</b> No qualified relativist has reviewed this yet. Until one does,
+      it stands as an independent measurement, not as accepted physics.</li>
+      <li><b>Five runs, one configuration.</b> The instability is measured on five seeds of a
+      single configuration. The apparent inversion between training loss and real geometric quality
+      is suggestive at that sample size, not established.</li>
+      <li><b>Not identical measurement points.</b> Each run is judged on hidden points derived from
+      its own checkpoint fingerprint, which keeps me from choosing flattering coordinates but means
+      the runs are not compared at exactly the same places.</li>
+    </ul>
+  </section>
+
+  <hr class="hair">
+
+  <p class="foot">Every number here comes from a file in the public repository, each with a recorded
+  SHA-256 checksum, kept alongside the runs that failed. Code and data:
+  <b>github.com/AndreiPLK/spacetime-verifier</b> &middot; archived as
+  <b>doi:10.5281/zenodo.21915627</b>. Paper under audit: arXiv:2607.05489. Instrument,
+  measurements and honest failures by Andrey Pluzhnik (ORCID 0009-0005-5660-2603), with an AI
+  agent doing the typing.</p>
+
+</div></div>

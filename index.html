@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrey Pluzhnik — independent research</title>
+<meta name="description" content="Independent verification of machine-learned physics. Instruments, audits, honest failures.">
+<style>
+  :root {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+            --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body);
+         line-height: 1.65; }
+  .col { max-width: 980px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(16px, 5vw, 40px) 64px;
+         display: flex; flex-direction: column; gap: 44px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--ink-soft); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 50px);
+       line-height: 1.1; margin: 8px 0 12px; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 2.6vw, 26px);
+       margin: 0 0 10px; }
+  p { margin: 0 0 10px; max-width: 64ch; }
+  .lede { font-size: clamp(16px, 1.9vw, 18.5px); }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .idline { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: var(--data);
+            font-size: 12.5px; color: var(--ink-soft); }
+  .idline a { color: var(--teal); text-decoration: none; }
+  .idline a:hover { text-decoration: underline; }
+
+  .card { border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2);
+          overflow: hidden; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(240px,0.85fr); }
+  @media (max-width: 760px) { .card { grid-template-columns: 1fr; } }
+  .card .body { padding: 26px 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .card .pic { background: #101725; display: flex; align-items: center; justify-content: center;
+               min-height: 240px; }
+  .card .pic { padding: 14px; } .card .pic img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .kind { font-family: var(--data); font-size: 10.5px; letter-spacing: 0.12em;
+          text-transform: uppercase; color: var(--teal); border: 1px solid var(--teal);
+          border-radius: 2px; padding: 3px 8px; align-self: flex-start; }
+  .card h2 a { color: var(--ink); text-decoration: none; }
+  .card h2 a:hover { color: var(--teal); }
+  .facts { font-family: var(--data); font-size: 12px; color: var(--ink-soft);
+           display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .btn { font-family: var(--data); font-size: 12px; padding: 7px 13px; border-radius: 3px;
+         text-decoration: none; border: 1px solid var(--rule); color: var(--ink); }
+  .btn:hover { border-color: var(--teal); color: var(--teal); }
+  .btn.primary { border-color: var(--teal); color: var(--teal); font-weight: 600; }
+
+  .soon { border: 1px dashed var(--rule); border-radius: 4px; padding: 20px 24px;
+          color: var(--ink-soft); }
+  .soon h2 { color: var(--ink); }
+  .foot { font-size: 12.5px; color: var(--ink-soft); font-family: var(--data); }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <header>
+    <div class="eyebrow">Independent researcher &middot; verification of AI-derived science</div>
+    <h1>Andrey Pluzhnik</h1>
+    <p class="lede">I build instruments that check what machine learning claims about physics —
+    and publish the measurements, the calibration floors, and the failed runs alongside the
+    successes. Work produced with an AI agent under one hard rule: the agent never gets to mark
+    its own work as verified.</p>
+    <div class="idline">
+      <span>ORCID <a href="https://orcid.org/0009-0005-5660-2603">0009-0005-5660-2603</a></span>
+      <span>GitHub <a href="https://github.com/AndreiPLK">@AndreiPLK</a></span>
+      <span>Zenodo <a href="https://zenodo.org/records/21915627">archive</a></span>
+    </div>
+  </header>
+
+  <hr class="hair">
+
+  <section style="display:flex;flex-direction:column;gap:22px;">
+    <div class="eyebrow">Published work</div>
+
+    <article class="card">
+      <div class="body">
+        <span class="kind">software + reproducibility study</span>
+        <h2><a href="works/spacetime-verifier/">Checking an AI's black holes</a></h2>
+        <p>An independent curvature evaluator for machine-learned spacetimes, and the first
+        audit run with it: five retrainings of a published neural black-hole configuration.
+        The exotic geometry reproduced five times out of five; the Einstein equation itself
+        held in two of five — and the model's own loss could not tell the difference.</p>
+        <div class="facts">
+          <span>2026-08</span>
+          <span>DOI 10.5281/zenodo.21915627</span>
+          <span>MIT</span>
+          <span>20 known-answer tests, CI on Linux/Windows</span>
+        </div>
+        <div class="links">
+          <a class="btn primary" href="works/spacetime-verifier/">Read the one-pager</a>
+          <a class="btn" href="works/spacetime-verifier/note.pdf">Technical note (PDF)</a>
+          <a class="btn" href="https://github.com/AndreiPLK/spacetime-verifier">Code &amp; data</a>
+          <a class="btn" href="https://doi.org/10.5281/zenodo.21915627">DOI</a>
+          <a class="btn" href="https://github.com/AndreiPLK/spacetime-verifier/blob/main/docs/RELEASE_REPORT.md">Full audit report</a>
+        </div>
+      </div>
+      <a class="pic" href="works/spacetime-verifier/" aria-label="Open the one-pager">
+        <img src="assets/seed-variability.png"
+             alt="Bar chart: five training runs of the same configuration; two pass the pre-frozen vacuum limit, three fail, while their training losses barely differ.">
+      </a>
+    </article>
+  </section>
+
+  <section class="soon">
+    <div class="eyebrow">In progress</div>
+    <h2>How did the universe grow its first supermassive black holes?</h2>
+    <p>JWST sees billion-solar-mass black holes less than a billion years after the Big Bang —
+    seemingly too big, too early. Next up: an open, honestly-calibrated testbed that runs every
+    proposed growth channel through one instrument and checks them against the public JWST
+    catalogues. Small papers, published as they land.</p>
+    <p style="margin:0;font-family:var(--data);font-size:12px;">Also queued: JOSS submission of
+    the verifier (eligible 2027-02, after six months of public history — their rule, a fair one).</p>
+  </section>
+
+  <hr class="hair">
+
+  <p class="foot">Everything here traces to files with recorded SHA-256 checksums, failed runs
+  included. AI involvement is disclosed in full in each repository. andypluzhnik@gmail.com</p>
+
+</div>
+</body>
+</html>
