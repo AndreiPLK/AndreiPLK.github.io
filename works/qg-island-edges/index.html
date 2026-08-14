@@ -1,0 +1,176 @@
+<title>The island of string theories has edges</title>
+<style>
+  :root {
+    --paper: #EDEFF2;
+    --paper-2: #E3E7ED;
+    --ink: #16233A;
+    --ink-soft: #4A5670;
+    --rule: #C3CAD6;
+    --teal: #0E7C7B;
+    --rust: #B3402A;
+    --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725;
+      --paper-2: #18202F;
+      --ink: #E4E8F0;
+      --ink-soft: #9AA6BE;
+      --rule: #2C3850;
+      --teal: #3FD0CD;
+      --rust: #EE7A5F;
+      --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--ink-soft); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(290px, 0.95fr);
+          gap: clamp(24px, 4vw, 46px); align-items: center; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+
+  .answer { border-left: 3px solid var(--teal); padding: 5px 0 5px 16px; margin-top: 6px;
+            font-family: var(--display); font-size: clamp(18px, 2.2vw, 24px); line-height: 1.34; }
+
+  .readings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card { border: 1px solid var(--rule); border-radius: 3px; padding: 18px 20px 20px;
+          display: flex; flex-direction: column; gap: 9px; background: var(--paper-2); }
+  .card .num { font-family: var(--data); font-size: 32px; font-variant-numeric: tabular-nums;
+               line-height: 1; color: var(--teal); }
+  .card .against { font-family: var(--data); font-size: 12px; color: var(--ink-soft);
+                   font-variant-numeric: tabular-nums; }
+  .chip { align-self: flex-start; font-family: var(--data); font-size: 10.5px; letter-spacing: 0.1em;
+          text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--teal);
+          color: var(--teal); border-radius: 2px; }
+
+  .steps { display: flex; flex-direction: column; }
+  .step { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 15px 0;
+          border-top: 1px solid var(--rule); }
+  .step:last-child { border-bottom: 1px solid var(--rule); }
+  .step .when { font-family: var(--data); font-size: 12px; color: var(--indigo);
+                letter-spacing: 0.04em; padding-top: 2px; }
+  .step .what { max-width: 68ch; }
+  @media (max-width: 560px) { .step { grid-template-columns: 1fr; gap: 4px; } }
+
+  .caveat { border: 1px solid var(--rust); border-radius: 3px; padding: 18px 22px 20px; }
+  .caveat h2 { color: var(--rust); }
+  .caveat ul { margin: 6px 0 0; padding-left: 20px; }
+  .caveat li { margin-bottom: 7px; max-width: 66ch; }
+
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 34px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  figcaption { font-size: 13px; color: var(--ink-soft); max-width: 54ch; }
+  svg { width: 100%; height: auto; overflow: visible; }
+
+  .s-ink { stroke: var(--ink); fill: none; }
+  .s-rule { stroke: var(--rule); fill: none; }
+  .s-dash { stroke: var(--ink); fill: none; stroke-dasharray: 5 4; }
+  .s-teal { stroke: var(--teal); fill: none; }
+  .hatch-line { stroke: var(--indigo); stroke-opacity: 0.3; }
+  .dot-in { fill: var(--ink); }
+  .dot-out { fill: none; stroke: var(--teal); stroke-width: 1.9; }
+  .bar-teal { fill: var(--teal); }
+  .bar-rust { fill: var(--rust); }
+  .lbl { font-family: var(--data); font-size: 10px; fill: var(--ink); }
+  .lbl-soft { font-family: var(--data); font-size: 10px; fill: var(--ink-soft); }
+  .lbl-teal { font-family: var(--data); font-size: 10px; fill: var(--teal); }
+  .lbl-name { font-family: var(--body); font-size: 12px; fill: var(--ink); }
+  .lbl-num { font-family: var(--data); font-size: 12px; fill: var(--ink);
+             font-variant-numeric: tabular-nums; }
+  .lbl-num-rust { font-family: var(--data); font-size: 12px; fill: var(--rust);
+                  font-variant-numeric: tabular-nums; }
+
+  .foot { font-size: 13px; color: var(--ink-soft); max-width: 80ch; }
+  .foot code { font-family: var(--data); font-size: 12.5px; }
+  b { font-weight: 600; }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">science &middot; preprint &middot; 2026-08</div>
+  <h1>The island of string theories has edges &mdash; and now we know where</h1>
+  <p class="lede">A three-parameter family of Veneziano-type string amplitudes is allowed
+  or forbidden by one quantum rule: scattering probabilities can never be negative.
+  Until now the allowed &ldquo;island&rdquo; was known only as a computer scan.
+  This work derives its boundary in closed form &mdash; and the formulas survived
+  11,994 exact checks, an adversarial review, and a cross-check against a rival
+  team's independent method.</p>
+  <p class="small"><a href="../../">&larr; Andrei Pluzhnik &mdash; all work</a></p>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>What was done</h2>
+  <p>The Cheung&ndash;Hillman&ndash;Remmen bootstrap (PRL 133, 251601) forces a
+  three-parameter family (q, r, w) of dual resonant amplitudes; partial-wave
+  positivity carves out an island in parameter space, mapped numerically at
+  finite depth. Tracking the top coefficients of the level-n residue polynomial
+  through the partial-wave projection gives exact sign laws for the near-leading
+  Regge trajectories:</p>
+  <p style="font-family:var(--data)">sgn&nbsp;a<sub>n,n&minus;1</sub> = sgn[ n(r + (1+&mu;&#8320;)/2) + w ]</p>
+  <p>Consequences: nothing survives left of r = &minus;(1+&mu;&#8320;)/2, in any
+  dimension D &gt; 3; the erosion of finite-depth scans is explained cell by cell;
+  the full boundary reduces to a short list of explicit algebraic curves
+  (conjecturally complete, and labeled as such); and for q &gt; 1 the depth at
+  which unitarity kills the deformation follows n<sub>crit</sub> &asymp; 1.1(q&minus;1)<sup>&minus;1/2</sup>.</p>
+  <img src="edge-map.png" alt="Fine boundary scan: cyan allowed points, grey excluded, pink diamonds are 176 false positives of the finite-depth scan removed by the edge law, dashed line is the analytic edge r=-1/2." style="width:100%;border:1px solid var(--rule);border-radius:6px">
+  <p class="small">The 0.02-resolution boundary scan. Pink: 176 points a depth-20 scan
+  wrongly admits &mdash; each removed by the law, with its death depth predicted.</p>
+</section>
+
+<section>
+  <h2>How it was checked</h2>
+  <p>Every claim-bearing computation uses exact rational arithmetic &mdash; floating-point
+  error cannot exist. The evaluator was validated by two independent routes; the derivations
+  passed an independent adversarial review (its six-attack falsification script ships with
+  the code and exits clean); a from-scratch validator that imports none of the project code
+  reproduced the key results (PASS 5/5); and on the one slice where a rival method exists
+  (Mansfield&ndash;Spradlin, JHEP 02 (2025) 145), both approaches land on the same line.</p>
+  <div class="facts">
+    <span>11,994 exact verdicts &middot; 0 unexplained mismatches</span>
+    <span>8 predicted exact zeros &mdash; 8 confirmed</span>
+    <span>independent review: no algebraic error found</span>
+    <span>AI involvement disclosed in full</span>
+  </div>
+</section>
+
+<section>
+  <div class="links">
+    <a class="btn primary" href="paper.pdf">Read the paper (PDF, 6 pages)</a>
+    <a class="btn" href="https://github.com/AndreiPLK/qg-island-edges">Code &amp; data</a>
+    <a class="btn" href="https://github.com/AndreiPLK/qg-island-edges/releases/tag/v1.0.0">Release v1.0</a>
+  </div>
+</section>
+
+<hr class="hair">
+<p class="foot">Honest status: the edge law and trajectory brackets are derived and
+independently reviewed; completeness of the boundary characterization is a conjecture,
+verified on 11,994 exact points to depth 80 and labeled as such in the paper.</p>
+
+</div></div>
+</body></html>
