@@ -107,6 +107,14 @@
   .foot { font-size: 13px; color: var(--ink-soft); max-width: 80ch; }
   .foot code { font-family: var(--data); font-size: 12.5px; }
   b { font-weight: 600; }
+
+  /* global link + contrast pass (founder feedback 2026-08-14) */
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+  .small a, .foot a, figcaption a { color: var(--teal); }
+  .eyebrow { color: var(--teal); }
+  code, .formula-inline { font-family: var(--data); background: var(--paper-2);
+    padding: 1px 6px; border-radius: 4px; }
 </style>
 
 <div class="wrap"><div class="col">
