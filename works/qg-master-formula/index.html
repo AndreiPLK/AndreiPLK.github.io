@@ -1,0 +1,131 @@
+<title>The master formula: every way gravity can fail</title>
+<style>
+  :root {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+      --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--data);
+           font-size: 12px; color: var(--ink-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { font-family: var(--data); font-size: 12.5px; padding: 8px 14px;
+         border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+  .btn.primary { border-color: var(--teal); }
+  b { font-weight: 600; }
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+  code { font-family: var(--data); background: var(--paper-2); padding: 1px 6px; border-radius: 4px; }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">science &middot; preprint &middot; 2026-08</div>
+  <h1>Every way gravity can fail &mdash; in one formula</h1>
+  <p class="lede">Our previous paper found the cliff: the exact line where candidate
+  theories of quantum gravity die as spacetime dimensions grow. But a cliff measured
+  once could still hide trapdoors &mdash; other ways to fail somewhere else. This work
+  derives one closed formula for <b>all</b> of them, shows each is a finite
+  &ldquo;window&rdquo; hanging strictly above the cliff line, and checks three million
+  points in exact arithmetic: not a single trapdoor opens on the safe side.</p>
+  <p class="small"><a href="../../">&larr; Andrei Pluzhnik &mdash; all work</a></p>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>What was done</h2>
+  <p>For the Cheung&ndash;Hillman&ndash;Remmen graviton family (which contains textbook
+  string theory), every Regge-trajectory partial wave $a_{n,2n-2j}$ obeys a single
+  sign law: an alternating &ldquo;ladder&rdquo; polynomial with factorial weights,
+  integer symmetric functions of the residue roots, and a chain of dimension shifts.
+  The trajectory law of the previous paper is its first rung; the second rung reveals
+  that each level cuts a finite <b>window</b> of dimensions and re-releases beyond it
+  &mdash; for the string the first window is D&thinsp;&isin;&thinsp;(26.2,&thinsp;30.4)
+  at level 7, confirmed by exact evaluation to the unit.</p>
+  <img src="knives-above-shore.png" alt="The shore divides living land from dead land; blade-shaped kill windows of levels 6, 8, 11 float strictly above the shore; the string sits on the shore at D=23." style="width:100%;border:1px solid var(--rule);border-radius:6px">
+  <p class="small">The blades never touch the shore: every extra kill-window floats
+  strictly above the boundary of the previous paper. Closest approach: 2.17 dimensions.</p>
+</section>
+
+<section>
+  <h2>How it was checked</h2>
+  <p>The formula is derived, not fitted &mdash; residue roots plus an exact
+  monomial&ndash;Gegenbauer integral. Batteries (all exact arithmetic): 22/22 symbolic
+  matches against independently extracted brackets; a blind test on a trajectory the
+  construction never used (702/702); and an independent adversarial review that
+  re-derived the theorem, mechanically proved the key integral, and wrote its own
+  evaluator from scratch &mdash; 4,060/4,060 sign agreements including odd and
+  fractional dimensions. The completeness sweep then evaluated every trajectory
+  constraint at every integer dimension inside the allowed region: 3,053,832 verdicts,
+  zero violations.</p>
+  <div class="facts">
+    <span>22/22 symbolic &middot; 702/702 blind &middot; 4,060/4,060 adversarial</span>
+    <span>3,053,832-point completeness battery, 0 hits</span>
+    <span>independent review: theorem re-derived end-to-end</span>
+    <span>AI involvement disclosed in full</span>
+  </div>
+</section>
+
+<section>
+  <h2>Explain it to anyone</h2>
+  <p>A house rule of this lab: <b>every paper ships with a way to explain it to your
+  family</b>. Think of the cliff from the last paper. This paper asked: are there other
+  ways to fall that we missed? We found the formula for every single one. Each turns
+  out to be a floating blade &mdash; a strip of dimensions where a theory dies &mdash;
+  and when we drew the whole fleet of blades, they all sail parallel to the shore,
+  always above it, never cutting into the land of the living. Three million exact
+  checks; zero surprises. The cliff keeps looking like the true edge.</p>
+  <figure style="margin:0">
+    <a href="knives-zoomout.png"><img src="knives-zoomout.png" alt="Zoomed out: a fleet of blade-shaped windows of many levels sailing parallel to the shore line up to a thousand dimensions." style="width:100%;border:1px solid var(--rule);border-radius:6px"></a>
+    <figcaption class="small">Zoom out: the fleet of blades, levels 6 to 160, up to a
+    thousand dimensions. All parallel to the shore, none ever landing.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="links">
+    <a class="btn primary" href="paper.pdf">Read the paper (PDF, 4 pages)</a>
+    <a class="btn" href="https://github.com/AndreiPLK/qg-master-formula">Code &amp; data</a>
+    <a class="btn" href="../qg-gravity-shore/">Companion: the shore paper</a>
+    <a class="btn" href="../qg-island-edges/">Companion: the island paper</a>
+  </div>
+</section>
+
+<hr class="hair">
+<p class="foot small">Honest status: the master formula is a theorem (derived;
+independently re-derived and adversarially attacked with zero falsifications).
+Completeness of the boundary remains a conjecture, now verified against every
+trajectory constraint on 3,053,832 exact points and labeled as such in the paper.
+DOI: to be minted with the archived release.</p>
+
+</div></div>
+</body></html>
