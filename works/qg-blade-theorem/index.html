@@ -1,0 +1,125 @@
+<title>The blades never touch the shore: the proof</title>
+<style>
+  :root {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+      --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--data);
+           font-size: 12px; color: var(--ink-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { font-family: var(--data); font-size: 12.5px; padding: 8px 14px;
+         border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+  .btn.primary { border-color: var(--teal); }
+  b { font-weight: 600; }
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">science &middot; preprint &middot; 2026-08</div>
+  <h1>Checking is not knowing: the blades never touch the shore &mdash; proved</h1>
+  <p class="lede">Our master-formula paper found the blades: extra kill-zones floating
+  above the shore where theories of gravity die. Three million exact checks never saw
+  one touch the water. This paper replaces checking with knowing: a proof, built from
+  1,047 exact-arithmetic certificates, that no blade of any level, at any coupling,
+  anywhere along the infinite coast, ever cuts into the land of the living.</p>
+  <p class="small"><a href="../../">&larr; Andrei Pluzhnik &mdash; all work</a></p>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>The beautiful part</h2>
+  <p>Infinitely far out, the fleet of blades sails <b>exactly parallel</b> to the
+  shore: the tangency discriminant of 6&rho;&sup2; &minus; (12+4&radic;3)&rho; +
+  (8+4&radic;3) vanishes identically at &rho;* = 1+1/&radic;3 &mdash; zero angle
+  between fleet and shore. The theorem survives because every actual ship is confined
+  strictly inside the wake (windows need &rho; &le; 4/3, asymptotic tip at
+  &radic;(5/3) &asymp; 1.291). A naive proof must fail at the tangency; the
+  containment lemma is what makes it possible.</p>
+  <img src="tangent-fleet.png" alt="The blade cone touches the shore line at exactly one point; the window zone ends strictly before the tangency." style="width:100%;border:1px solid var(--rule);border-radius:6px">
+</section>
+
+<section>
+  <h2>How it was checked (and what the check caught)</h2>
+  <p>The proof is a single re-runnable script: envelope branches for small couplings
+  plus four deep-water lemmas over &#8474;(&radic;3). An independent adversarial
+  review then audited every implication &mdash; and caught a real bug: the prover had
+  silently skipped 740 cells while reporting success. Fixed; the reviewer's own
+  battery (sharing no code with the prover) re-certified every cell including the
+  formerly uncovered ones: no counterexample. That episode ships with the paper:
+  an exit code proves what a script checked, not what it covered.</p>
+  <div class="facts">
+    <span>1,047 certificate cells &middot; two independent provers, both exit 0</span>
+    <span>60,000-point stress test &middot; margins bottom out near 2.15 dims</span>
+    <span>exact tangency at &rho; = 1+1/&radic;3</span>
+    <span>AI involvement + the caught bug disclosed in full</span>
+  </div>
+  <figure style="margin:12px 0 0">
+    <a href="knives-above-shore.png"><img src="knives-above-shore.png" alt="Blade windows floating strictly above the shore; the string on the shore at D=23." style="width:100%;border:1px solid var(--rule);border-radius:6px"></a>
+    <figcaption class="small">The theorem, drawn: no blade ever reaches the shore.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Explain it to anyone</h2>
+  <p>A house rule of this lab: <b>every paper ships with a way to explain it to your
+  family</b>. Imagine a coastline where theories of gravity drown, and a fleet of
+  blade-shaped danger zones floating above it. We had checked three million spots and
+  the blades never touched the water. But checking is not knowing &mdash; maybe spot
+  three million and one is different. This paper is the proof that it never happens:
+  not anywhere, not for any blade, all the way to infinity &mdash; even though at
+  infinity the fleet sails exactly parallel to the shore, touching it at a single
+  unreachable point. And one more honest thing: our first version of the proof had a
+  real bug &mdash; it skipped 740 cases while claiming victory. An independent
+  reviewer caught it. We fixed it, re-proved everything twice, and put the story in
+  the paper, because that is how science should work.</p>
+</section>
+
+<section>
+  <div class="links">
+    <a class="btn primary" href="paper.pdf">Read the paper (PDF, 5 pages)</a>
+    <a class="btn" href="https://github.com/AndreiPLK/qg-blade-theorem">Code &amp; data</a>
+    <a class="btn" href="../qg-master-formula/">Companion: the master formula</a>
+    <a class="btn" href="../qg-gravity-shore/">Companion: the shore paper</a>
+  </div>
+</section>
+
+<hr class="hair">
+<p class="foot small">Honest status: the theorem covers the j=3 trajectory (the
+second knife); completeness for the higher knives remains a conjecture with a clean
+3-million-point battery. DOI: to be minted with the archived release.</p>
+
+</div></div>
+</body></html>
