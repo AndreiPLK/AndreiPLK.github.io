@@ -1,0 +1,163 @@
+<title>The shore of closed-string gravity</title>
+<style>
+  :root {
+    --paper: #EDEFF2;
+    --paper-2: #E3E7ED;
+    --ink: #16233A;
+    --ink-soft: #4A5670;
+    --rule: #C3CAD6;
+    --teal: #0E7C7B;
+    --rust: #B3402A;
+    --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725;
+      --paper-2: #18202F;
+      --ink: #E4E8F0;
+      --ink-soft: #9AA6BE;
+      --rule: #2C3850;
+      --teal: #3FD0CD;
+      --rust: #EE7A5F;
+      --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--data);
+           font-size: 12px; color: var(--ink-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { font-family: var(--data); font-size: 12.5px; padding: 8px 14px;
+         border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+  .btn.primary { border-color: var(--teal); }
+  b { font-weight: 600; }
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+  code, .formula-inline { font-family: var(--data); background: var(--paper-2);
+    padding: 1px 6px; border-radius: 4px; }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">science &middot; preprint &middot; 2026-08</div>
+  <h1>The shore of closed-string gravity &mdash; and the string standing exactly on it</h1>
+  <p class="lede">A one-parameter family of graviton scattering amplitudes contains
+  textbook string theory (the Virasoro&ndash;Shapiro amplitude) at &lambda;=1. One quantum
+  rule &mdash; probabilities can never be negative &mdash; kills part of the family as spacetime
+  dimensions grow. This work derives the killing boundary as a formula. It switches on at
+  9 dimensions, passes <b>exactly</b> through the string at <b>23</b> dimensions, and
+  straightens onto the exact asymptote D = (12+4&radic;3)&thinsp;&lambda;. In our own four
+  dimensions nothing in the family dies at all.</p>
+  <p class="small"><a href="../../">&larr; Andrei Pluzhnik &mdash; all work</a></p>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>What was done</h2>
+  <p>The Cheung&ndash;Hillman&ndash;Remmen graviton bootstrap (PRD 111, 086034) produces a
+  family of amplitudes whose residues are perfect squares; positivity of partial waves was
+  known to bound the family numerically for D &ge; 9. Tracking the top coefficients of the
+  residue polynomial through the partial-wave projection turns that numerics into a theorem:</p>
+  <p style="font-family:var(--data)">a<sub>n,2n&minus;4</sub> &ge; 0 &nbsp;&hArr;&nbsp;
+  D &le; T<sub>n</sub>(&lambda;) = 3(2n&minus;3)/(n(n&minus;2)) &middot;
+  (&lambda;&sup2;+(2n&minus;2)&lambda;+1) + 2n</p>
+  <p>Consequences: the shore is born at (D,&lambda;)=(9,0) &mdash; explaining, as a formula,
+  the onset CHR saw numerically; the minimum of T<sub>n</sub>(1) over levels is <b>exactly
+  23</b>, attained at n=4, so the shore passes exactly through the string, and pure
+  Virasoro&ndash;Shapiro first loses positivity at D=24 through its level-4 spin-4 wave;
+  at large &lambda; the shore straightens onto D = (12+4&radic;3)&thinsp;&lambda;. The claim
+  that this envelope is the <b>complete</b> boundary is a conjecture, labeled as such, with
+  a published falsification battery: 494/494 exact-scan agreements and three knife-hunts
+  along the boundary with zero alarms.</p>
+  <img src="gravity-cliff-3d.png" alt="3D landscape: a cyan plateau of surviving candidates, a cliff wall falling exactly along the formula, and a yellow lane — the string — walking the plateau and reaching the cliff edge at D=23." style="width:100%;border:1px solid var(--rule);border-radius:6px">
+  <p class="small">The cliff of survival. Height = how deep a candidate survives exact
+  positivity testing; the yellow lane is the string; the white diamond is D=23, where it
+  reaches the very edge. Every point is an exact rational verdict.</p>
+</section>
+
+<section>
+  <h2>How it was checked</h2>
+  <p>Every claim-bearing computation uses exact rational arithmetic &mdash; floating-point
+  error cannot exist. The theorem was re-derived from scratch by an independent adversarial
+  review; a seven-battery falsification suite ships with the code and exits clean; the
+  formula's razor predictions at never-scanned dimensions (D*=271/4 and D*=57) were confirmed
+  by direct evaluation, as were two doomed-cell executions at the predicted kill level.
+  During the work an implementation bug was found via an external anchor, disclosed in the
+  public log, and fixed; all affected results were voided and recomputed.</p>
+  <div class="facts">
+    <span>494/494 exact verdicts &middot; 0 alarms</span>
+    <span>T<sub>n</sub> verified symbolically 12/12</span>
+    <span>independent review: theorem re-derived, no counterexample</span>
+    <span>AI involvement disclosed in full</span>
+  </div>
+</section>
+
+<section>
+  <h2>Explain it to anyone</h2>
+  <p>A house rule of this lab: <b>every paper ships with a way to explain it to your
+  family</b>. Here is this one. Every candidate theory of gravity in this family is a hiker
+  on a high plateau. Adding dimensions of space means walking toward the edge. Below nine
+  dimensions there is no edge at all &mdash; everyone is safe, including our own world.
+  From nine dimensions on, a cliff appears, and we found the exact formula for where it
+  runs. String theory walks the plateau and reaches the very edge at exactly 23 dimensions
+  &mdash; one more step and it falls. The boundary of consistency passes exactly through
+  the string &mdash; but only in high dimensions.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <figure style="margin:0">
+      <a href="string-inside-vs-edge-en.png"><img src="string-inside-vs-edge-en.png" alt="Two panels: in low dimensions the string sits safely inside the allowed region; in high dimensions it stands exactly on the edge." style="width:100%;border:1px solid var(--rule);border-radius:6px"></a>
+      <figcaption class="small">Inside vs on the edge: what changes as dimensions grow.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <a href="ships-bow.png"><img src="ships-bow.png" alt="The companion open-string family drawn as a 3D solid: a ship's bow sailing through a sea of dead candidates." style="width:100%;border:1px solid var(--rule);border-radius:6px"></a>
+      <figcaption class="small">For fun: the companion open-string family as a ship's bow
+      (from <a href="../qg-island-edges/">the island paper</a>) &mdash; same style, every
+      voxel exact.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <a href="qg-zoomout.png"><img src="qg-zoomout.png" alt="Zoom-out map of the whole family: an open wedge — for every dimension sufficiently string-like candidates survive." style="width:100%;border:1px solid var(--rule);border-radius:6px"></a>
+      <figcaption class="small">The whole body zoomed out: an open wedge &mdash; the dead
+      mouth widens with dimensions, the string lane drowns past 23.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="links">
+    <a class="btn primary" href="paper.pdf">Read the paper (PDF, 6 pages)</a>
+    <a class="btn" href="https://github.com/AndreiPLK/qg-gravity-shore">Code &amp; data</a>
+    <a class="btn" href="../qg-island-edges/">Companion: the island paper</a>
+  </div>
+</section>
+
+<hr class="hair">
+<p class="foot small">Honest status: the trajectory law T<sub>n</sub> is a theorem
+(independently re-derived, general n); completeness of the boundary is a conjecture,
+verified on 494 exact points with three clean knife-hunts and labeled as such in the paper.
+DOI: to be minted with the archived release.</p>
+
+</div></div>
+</body></html>
