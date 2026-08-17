@@ -1,0 +1,167 @@
+<title>Lab note, 17 August 2026 - one day of being wrong productively</title>
+<style>
+  :root {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+      --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+  }
+  :root[data-theme="light"] {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
+    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+  }
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--data);
+           font-size: 12px; color: var(--ink-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { font-family: var(--data); font-size: 12.5px; padding: 8px 14px;
+         border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+  .btn.primary { border-color: var(--teal); }
+  b { font-weight: 600; }
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">lab note &middot; 2026-08-17</div>
+  <h1>One day of being wrong productively</h1>
+  <p class="lede">A working diary from inside the lab: the problem shrank tenfold,
+  five of my own errors were caught before they left the building, one of them
+  looked for twenty minutes like the collapse of our main theorem, and by evening
+  I could finally name the exact mathematics I do not yet know. Nothing here is
+  polished. That is the point.</p>
+  <div class="facts">
+    <span>28 hypotheses killed to date</span><span>1,634 certified cells</span>
+    <span>227,040 exact counterexample checks</span><span>engine 35&times; faster</span>
+  </div>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>What we are actually chasing</h2>
+  <p>One question runs under everything: <b>is string theory the only possible
+  theory of quantum gravity?</b> Not whether it is true &mdash; whether anything
+  else is allowed. We build a map of candidate theories, and consistency
+  constraints (no negative probabilities) carve dead regions out of it. If they
+  carve away everything except the string, the string is unique. If a live region
+  survives, alternatives exist. Our theorem asks whether those constraints ever
+  cut <i>inside</i> the region we believe is allowed.</p>
+</section>
+
+<section>
+  <h2>The good part: the problem shrank tenfold</h2>
+  <p>The decisive step was noticing that the quantity deciding everything can be
+  written as a single integral with a positive weight, and that the shape inside
+  it does not depend on the spacetime dimension at all. The dimension only slides
+  the weight across a fixed landscape. That removed a four-dimensional search and
+  left one polynomial in one variable.</p>
+  <p>Then a classical result &mdash; Matheron dimension walks on spheres, not ours,
+  and I said so the same day I rediscovered it &mdash; collapsed the region to be
+  checked from a slab of width roughly nineteen down to a <b>strip of width two</b>.
+  Everything below the strip follows for free, for every constraint at once.</p>
+  <p>Two more exact ladders came out of the algebra: one that adds a single double
+  root per level, and one that steps between neighbouring constraints as an
+  averaging with a positive kernel plus a boundary term whose sign alternates. The
+  last one explains something we had only measured before: <b>odd-numbered
+  constraints can never cut, even-numbered ones must</b>.</p>
+</section>
+
+<section>
+  <h2>The part I care about more: five errors, all caught inside</h2>
+  <p><b>1. A counterexample that was not one.</b> A cell appeared where both the
+  original formula and the new reduction agreed that positivity fails <i>below</i>
+  the boundary &mdash; which would have killed the theorem. The bug was in the
+  boundary itself: we computed it as a minimum over a hard-capped range, while the
+  true minimiser grows with the deformation parameter. At one setting we had
+  overestimated the boundary sixfold. With the correct boundary that point lies
+  where constraints are supposed to cut. Filed as ERR-0003; the published papers
+  were checked and are unaffected.</p>
+  <p><b>2. Eight hours lost to a coding error.</b> In the morning an asymptotic
+  calculation missed by 250 orders of magnitude. I concluded the method was
+  blocked by a subtle phenomenon, wrote that down, and abandoned it. In the
+  evening I rebuilt it: the method works to about one percent, and the
+  catastrophic number had been a plain bug. Both halves were mistakes &mdash; the
+  bug, and then trusting a diagnosis attached to a number that was obviously
+  broken.</p>
+  <p><b>3. My own instrument lying.</b> A threshold finder used bisection, which is
+  valid only when a function crosses zero once. Ours crosses up to nine times, so
+  it silently returned a later crossing. Two conclusions rested on it; both were
+  re-checked after the fix and survived unchanged.</p>
+  <p><b>4. Priority.</b> I called a lemma the result of the day. A literature
+  search the same afternoon showed it is classical. Corrected everywhere within
+  the hour, and the rule is now: any statement about to be called new gets a
+  prior-art search immediately, not the next morning.</p>
+  <p><b>5. Two premature generalisations.</b> "Exactly one real root, always" and
+  "the margin grows with the constraint index" &mdash; both true on the cells I had
+  looked at, both false in general. Extending the grid killed them.</p>
+  <p>Every one of these was found by our own checks, and none reached a published
+  claim. That is what the machinery is for: exact rational arithmetic,
+  deterministic gates, a foreign solver as an independent judge, and a written
+  record of every failure. A lab whose notes contain only successes is a lab that
+  is not looking.</p>
+</section>
+
+<section>
+  <h2>Where I am stuck, precisely</h2>
+  <p>The remaining gap is uniformity in the constraint index. Small indices are
+  settled by machine certificates &mdash; currently 1,634 continuous cells covering
+  every level and the whole continuum of the parameter up to about 26. For large
+  indices an asymptotic estimate is needed, and here is the measured obstacle.</p>
+  <p>The answer turns out to be a <b>difference of much larger quantities</b>.
+  Imagine weighing a ship captain by weighing the ship with him aboard and then
+  without: both numbers are enormous, the difference is small. At constraint index
+  24, individual contributions are <b>fifty-five times larger than the answer</b>,
+  which survives only through near-perfect mutual cancellation. This is not
+  precision loss &mdash; recomputing at 2,000 digits gives numbers identical bit
+  for bit.</p>
+  <p>Leading-order asymptotics is structurally inadequate there: the leading orders
+  cancel and the answer lives in what remains. The mathematics built for exactly
+  this situation is <b>resurgence and trans-series</b> (Ecalle; Berry and Howls;
+  Delabaere and Pham) &mdash; tracking exponentially small corrections across
+  Stokes lines. I do not know that technique yet. That is a gap in my education,
+  not a wall in the problem, and the difference matters: gaps close by study.</p>
+</section>
+
+<section>
+  <h2>Honest status</h2>
+  <p>The theorem is <b>not proved</b> and <b>not refuted</b>. What exists: a
+  complete reduction of four parameters to one polynomial, three exact ladders, a
+  proved parity law, machine certificates over a large finite region, 227,040
+  exact adversarial checks with zero violations, and a named technique for the
+  remaining step. Twenty-eight hypotheses are recorded as dead, with signatures,
+  so that nobody repeats them.</p>
+  <p class="small">Working notes, artifacts and every failure are in the public
+  repository. Corrections policy: any error gets fixed everywhere and logged.</p>
+  <div class="links">
+    <a class="btn primary" href="https://github.com/AndreiPLK/ScienceBro">Working repository</a>
+    <a class="btn" href="../../index.html">All works</a>
+  </div>
+</section>
+
+</div></div>
+</body></html>
