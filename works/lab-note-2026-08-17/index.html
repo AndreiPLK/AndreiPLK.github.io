@@ -1,8 +1,8 @@
 <title>Lab note, 17 August 2026 - one day of being wrong productively</title>
 <style>
   :root {
-    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
-    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --paper: #F1EEE7; --paper-2: #E8E4DA; --ink: #221F1A; --ink-soft: #565147;
+    --rule: #CBC4B4; --teal: #0F7A6B; --rust: #B3402A; --indigo: #2E3A8C;
     --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
     --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
@@ -10,16 +10,16 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
-      --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+      --rule: #322E26; --teal: #58D3BE; --rust: #EE7A5F; --indigo: #8B99EC;
     }
   }
   :root[data-theme="dark"] {
     --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
-    --rule: #2C3850; --teal: #3FD0CD; --rust: #EE7A5F; --indigo: #8B99EC;
+    --rule: #322E26; --teal: #58D3BE; --rust: #EE7A5F; --indigo: #8B99EC;
   }
   :root[data-theme="light"] {
-    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670;
-    --rule: #C3CAD6; --teal: #0E7C7B; --rust: #B3402A; --indigo: #2E3A8C;
+    --paper: #F1EEE7; --paper-2: #E8E4DA; --ink: #221F1A; --ink-soft: #565147;
+    --rule: #CBC4B4; --teal: #0F7A6B; --rust: #B3402A; --indigo: #2E3A8C;
   }
   .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
           line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
@@ -43,6 +43,25 @@
   b { font-weight: 600; }
   a { color: var(--teal); text-underline-offset: 3px; }
   a:hover { color: var(--rust); }
+
+  /* paper grain + faint drafting grid: a lab notebook, not a nebula */
+  body { position: relative; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.30; mix-blend-mode: multiply;
+  }
+  @media (prefers-color-scheme: dark) {
+    body::before { opacity: 0.16; mix-blend-mode: screen; }
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 88px),
+      repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 88px);
+    opacity: 0.22;
+  }
+  .wrap, .col { position: relative; z-index: 1; }
 </style>
 <div class="wrap"><div class="col">
 
