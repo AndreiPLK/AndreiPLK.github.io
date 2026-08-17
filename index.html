@@ -89,57 +89,56 @@
 
   <hr class="hair">
 
-  <section style="display:flex;flex-direction:column;gap:14px;">
-    <div class="eyebrow">Lab news &middot; program progress</div>
-    <div style="font-family:var(--data);font-size:13px;color:var(--ink-soft)">
-      The quantum-gravity bootstrap program: 4 works published (all with DOI) &middot;
-      <b>11 knife theorems proven (j = 2..12)</b> &middot; grand completeness theorem: one
-      inequality left
-      <span style="color:var(--teal)">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</span><span style="opacity:.25">&#9608;&#9608;</span> ~85%
-    </div>
-    <div style="border-left:3px solid var(--teal);padding:4px 0 4px 16px">
-      <p style="margin:0"><b>Aug 17 &mdash; Eleven theorems, and the last obstacle in one
-      picture.</b> An overnight autonomous run proved the knife theorems for j = 4..12
-      (each region machine-certified, deterministic gate green), moved the whole prover to
-      exact C-speed arithmetic (hours &rarr; seconds), and produced two structural results:
-      a <b>closed hypergeometric form</b> for every knife bracket (verified on 4,320 exact
-      checks) and a <b>perfect-square identity</b> showing the sign problem lives in the
-      weights, not the spectrum. Fourteen candidate proofs of the grand theorem were
-      tested and honestly falsified; what remains is a single explicit weighted
-      inequality, shown below.</p>
-      <p style="margin:10px 0 0"><img src="media/last-obstacle.png" alt="The last obstacle"
-      style="width:100%;border-radius:8px"></p>
-      <p class="small" style="margin:6px 0 0;opacity:.8">The function our reduction
-      produced, across every knife: positive on the whole plateau (cyan), dipping under
-      the zero sheet (yellow) only at the very edge &mdash; where the measure carries
-      almost no weight. Proving the dip cannot win is the grand theorem.</p>
-    </div>
-    <div style="border-left:3px solid var(--teal);padding:4px 0 4px 16px">
-      <p style="margin:0"><b>Aug 16 — Checking is not knowing: first theorem proved.</b>
-      What 3,053,832 exact checks suggested is now mathematics: no kill-window of the
-      second knife ever cuts below the shore &mdash; even though at infinity the fleet of
-      blades sails <i>exactly tangent</i> to it. The prover's one real bug was caught by
-      adversarial review and the story ships in the paper.
-      <a href="works/qg-blade-theorem/">Read &rarr;</a></p>
-    </div>
-    <div style="border-left:3px solid var(--rule);padding:4px 0 4px 16px">
-      <p style="margin:0" class="small"><b>Aug 15 — Two papers in one day.</b> The shore of
-      closed-string gravity in closed form (the string exactly on it at D=23), then the
-      master formula: every trajectory constraint in one line.
-      <a href="works/qg-gravity-shore/">Shore &rarr;</a> &middot;
-      <a href="works/qg-master-formula/">Master formula &rarr;</a></p>
-    </div>
-    <div style="border-left:3px solid var(--rule);padding:4px 0 4px 16px">
-      <p style="margin:0" class="small"><b>Aug 14 — The island has edges.</b> Closed-form
-      boundaries for the island of string amplitudes; 11,994 exact verdicts.
-      <a href="works/qg-island-edges/">Read &rarr;</a></p>
-    </div>
-  </section>
+  <style>
+  .layout { display: grid; grid-template-columns: 292px minmax(0,1fr); gap: 42px;
+            align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 28px; }
+    .side { order: 2; } }
+  .side { display: flex; flex-direction: column; gap: 14px;
+          border-right: 1px solid var(--rule); padding-right: 24px; }
+  @media (max-width: 900px) { .side { border-right: 0; padding-right: 0;
+    border-top: 1px solid var(--rule); padding-top: 20px; } }
+  .side .sfacts { font-family: var(--data); font-size: 11.5px; line-height: 1.75;
+                  color: var(--ink-soft); margin: 0; max-width: none; }
+  .side .sthumb { display: flex; flex-direction: column; gap: 6px;
+                  text-decoration: none; }
+  .side .sthumb img { width: 100%; border: 1px solid var(--rule);
+                      border-radius: 3px; background: #0b0714; display: block; }
+  .side .sthumb span { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  .side .sthumb:hover span { color: var(--teal); }
+</style>
+<div class="layout">
+<aside class="side">
+  <div class="eyebrow">Status &middot; 17 Aug 2026</div>
+  <p class="sfacts"><b>4 works published</b> (all with DOI)<br>
+  <b>knife theorems: j = 2..13</b> proved<br>
+  <b>strip certificates: j = 2..25</b>, 2,064 continuous cells, zero failures<br>
+  <b>28 hypotheses</b> recorded as dead<br>
+  <b>227,040</b> exact counterexample checks, zero violations</p>
 
-  
-<hr class="hair">
+  <a class="sthumb" href="works/lab-note-2026-08-17/index.html">
+    <img src="works/lab-note-2026-08-17/whole-story.png" alt="The shore of gravity">
+    <span>The programme on one terrain: the floor is allowed gravity, the wall is
+    forbidden, the string stands exactly on the edge at 23 dimensions.</span>
+  </a>
 
-  <section style="display:flex;flex-direction:column;gap:22px;">
+  <a class="sthumb" href="works/lab-note-2026-08-17/index.html">
+    <img src="works/lab-note-2026-08-17/almost-positive.png" alt="Almost positive">
+    <span>Where the proof is stuck: one big positive hump, dipping under zero by
+    two ten-thousandths. A loop with no dip proves the theorem.</span>
+  </a>
+
+  <p class="sfacts" style="border-top:1px solid var(--rule);padding-top:10px">
+  <b>Open:</b> uniformity in the constraint index. Sign-definite loops exist above
+  j = 18; below it the certified region already covers the range. The two halves
+  are close to meeting.</p>
+
+  <p class="sfacts"><a href="works/lab-note-2026-08-17/index.html">Full lab note,
+  including every error caught &rarr;</a></p>
+</aside>
+
+<main style="display:flex;flex-direction:column;gap:40px;min-width:0">
+<section style="display:flex;flex-direction:column;gap:22px;">
     <div class="eyebrow">Published work</div>
 
     <article class="card">
@@ -308,6 +307,8 @@
   <p class="foot">Everything here traces to files with recorded SHA-256 checksums, failed runs
   included. AI involvement is disclosed in full in each repository. andypluzhnik@gmail.com</p>
 
+</main>
+</div>
 </div>
 </body>
 </html>
