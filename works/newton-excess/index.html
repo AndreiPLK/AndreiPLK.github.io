@@ -1,0 +1,201 @@
+<title>A floor under Newton's inequality</title>
+<style>
+  :root {
+    --paper: #EDEFF2; --paper-2: #E3E7ED; --ink: #16233A; --ink-soft: #4A5670; --rule: #CBC4B4;
+    --teal: #0F7A6B; --rust: #B3402A; --indigo: #2E3A8C;
+    --display: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia, serif;
+    --body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --data: Consolas, "Cascadia Mono", "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+            --rule: #322E26; --teal: #58D3BE; --rust: #EE7A5F; --indigo: #8B99EC; }
+  }
+  :root[data-theme="dark"] { --paper: #101725; --paper-2: #18202F; --ink: #E4E8F0; --ink-soft: #9AA6BE;
+    --rule: #322E26; --teal: #58D3BE; --rust: #EE7A5F; --indigo: #8B99EC; }
+  :root[data-theme="light"] { --paper: #F1EEE7; --paper-2: #E8E4DA; --ink: #221F1A; --ink-soft: #565147;
+    --rule: #CBC4B4; --teal: #0F7A6B; --rust: #B3402A; --indigo: #2E3A8C; }
+
+  .wrap { background: var(--paper); color: var(--ink); font-family: var(--body);
+          line-height: 1.65; padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 48px) 56px; }
+  .col { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+  .eyebrow { font-family: var(--data); font-size: 11.5px; letter-spacing: 0.16em;
+             text-transform: uppercase; color: var(--teal); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 52px);
+       line-height: 1.08; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(21px, 2.6vw, 28px);
+       margin: 0 0 8px; text-wrap: balance; }
+  h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  p { margin: 0 0 12px; max-width: 66ch; }
+  .lede { font-size: clamp(16.5px, 1.9vw, 19px); max-width: 62ch; }
+  .hair { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .small { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--data); font-size: 12.5px;
+           color: var(--ink-soft); }
+  .facts span::before { content: "\25AA\00a0"; color: var(--teal); }
+  .caveat { border: 1px solid var(--rust); border-radius: 3px; padding: 18px 22px 20px; }
+  .caveat h2 { color: var(--rust); }
+  .caveat ul { margin: 6px 0 0; padding-left: 20px; }
+  .caveat li { margin-bottom: 7px; max-width: 66ch; }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 34px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  figcaption { font-size: 13px; color: var(--ink-soft); max-width: 54ch; }
+  .fig { width: 100%; border: 1px solid var(--rule); border-radius: 6px; background: #fff; display: block; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { font-family: var(--data); font-size: 12.5px; padding: 8px 14px; border: 1px solid var(--teal);
+         border-radius: 3px; color: var(--teal); text-decoration: none; }
+  .btn.primary { background: var(--teal); color: var(--paper); }
+  .btn:hover { border-color: var(--rust); color: var(--rust); }
+  .btn.primary:hover { background: var(--rust); color: var(--paper); }
+  .story { border-left: 3px solid var(--teal); padding: 6px 0 6px 18px; }
+  .story p { max-width: 70ch; }
+  .foot { font-size: 13px; color: var(--ink-soft); max-width: 80ch; }
+  code { font-family: var(--data); background: var(--paper-2); padding: 1px 6px; border-radius: 4px; }
+  b { font-weight: 600; }
+  a { color: var(--teal); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+  body { position: relative; background: var(--paper); }
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.22;
+    background-image: repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 88px),
+                      repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 88px); }
+  .wrap, .col { position: relative; z-index: 1; }
+</style>
+<div class="wrap"><div class="col">
+
+<header>
+  <div class="eyebrow">mathematics &middot; preprint &middot; 2026-09</div>
+  <h1>A floor under Newton's inequality &mdash; and most of a conjecture nobody had touched since 1988</h1>
+  <p class="lede">In 1707 Newton proved that a certain sequence built from any list of positive numbers
+  never has a dent in it. He said <i>at least</i>; he did not say by how much. For one list that matters
+  to string theory the answer turns out to be exactly <b>4/5</b>, and it is proved. For the classical
+  list 1, 2, 3, &hellip; a Japanese statistician guessed the exact amount in 1988; we prove his guess
+  over most of its range and say precisely where our proof stops.</p>
+  <p class="small"><a href="../../">&larr; Andrei Pluzhnik &mdash; all work</a></p>
+</header>
+
+<hr class="hair">
+
+<section>
+  <h2>What was done</h2>
+  <p><b>Theorem A (complete).</b> For the <i>centred-square spectrum</i> &mdash; the odd squares 1, 9, 25, &hellip;,
+  each taken twice, which is the list that decides whether a deformed string amplitude stays physically
+  consistent &mdash; the Newton excess <code>M(n,t) = n&nbsp;(p<sub>t</sub>&sup2;/(p<sub>t&minus;1</sub>p<sub>t+1</sub>) &minus; 1)</code>
+  is greater than <b>4/5</b> for every odd <i>n</i> &ge; 5 and every <i>t</i> &lt; <i>n</i>/2. The constant is
+  sharp: it is the limiting relative variance of the roots, and the excess creeps down to it without ever
+  touching. The proof is a finite decomposition into five machine-checked pieces.</p>
+  <p><b>Theorem B (Sibuya's 1988 conjecture, large parts).</b> For the unsigned Stirling numbers of the
+  first kind, Masaaki Sibuya conjectured (Ann. Inst. Statist. Math. 40, eq. 3.4) that
+  <code>p<sub>j</sub>&sup2;/(p<sub>j&minus;1</sub>p<sub>j+1</sub>) &ge; 1 + 1/(3n&minus;j)</code>. As far as we can find,
+  nobody cited that line as a conjecture in thirty-eight years. We prove it for every <i>j</i> &le; 1000
+  and every <i>n</i>; for every <i>j</i> &ge; 1001 with <i>j</i>/(<i>n</i>&minus;1) &le; 0.9; and at the top of
+  the row whenever at most 802 indices are missing. One region is open and is stated exactly.</p>
+  <div class="two">
+    <figure>
+      <img class="fig" src="theorem_3d.svg" alt="The excess surface M(n,t) over the (n,t) plane, with the floor 4/5 drawn as a plane underneath; the surface never dips through it.">
+      <figcaption>Theorem A as terrain: the excess surface over every <i>(n, t)</i>, and the floor 4/5 beneath it. The lowest ridge runs along <i>t</i> = 1 and settles onto the floor at infinity.</figcaption>
+    </figure>
+    <figure>
+      <img class="fig" src="sibuya_3d.svg" alt="Sibuya's inequality as a surface over the row, with the floor 1/3 drawn beneath it and the open region marked.">
+      <figcaption>Theorem B: Sibuya's excess over the row, the floor 1/3 beneath it, and the one corner still open, marked as such.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>How it was checked &mdash; and what the check caught</h2>
+  <p>Nothing here is an <i>O(&middot;)</i>. Every error term is a numerical interval with proved endpoints,
+  computed in arithmetic that carries its own error bars, and a claim is made only when the interval sits
+  strictly on the right side of zero. Every piece is a script that writes a log; every log ships with the
+  code. Each certificate was re-implemented by an independent validator that never imported the code it
+  was validating.</p>
+  <p>On the day of release we ran two adversarial reviews against Theorem B, one hunting for holes and one
+  re-deriving every load-bearing fact by a disjoint code path. They converged on the same spot: every
+  <i>number</i> was right, but one <i>derivation</i> leaned on a Poisson approximation that is off by a factor
+  of 2.8 where it was used. The conclusion had survived on unstated slack. The step was rewritten so that
+  no approximation appears in it at all, the certificate was re-run, and both reports are in the
+  repository. We think that is what checking is for.</p>
+  <div class="facts">
+    <span>627-rung ladder + 3 certificates, each independently validated</span>
+    <span>4,705 grid steps, worst margin 1.9&times;10<sup>&minus;10</sup></span>
+    <span>two adversarial debates, one derivation repaired</span>
+    <span>AI involvement disclosed in full</span>
+  </div>
+</section>
+
+<section class="caveat">
+  <h2>What is not proved</h2>
+  <ul>
+    <li>Sibuya's inequality in the top decile of the row when many indices are missing:
+      <i>j</i> &ge; 1001, <i>j</i>/(<i>n</i>&minus;1) &gt; 0.9, at least 803 indices missing. There the two sides of
+      the inequality agree to leading order and no bound in this package separates them uniformly.</li>
+    <li>A human referee has not read either proof yet. The certificates are exact and self-checking; the
+      <i>setup</i> &mdash; that the quantities certified are the ones the theorems are about &mdash; is what we
+      ask a reader to check.</li>
+    <li>The physics application (reading the 4/5 floor back onto the map of consistent string
+      amplitudes) is the next paper, not this one.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Explain it to anyone</h2>
+  <p>A house rule of this lab: <b>every paper ships with a way to explain it to your family</b>. The video
+  abstract and the comic for this one are still being made; the stories are here now.</p>
+  <div class="two">
+    <div class="story">
+      <h3>For friends and kids (English)</h3>
+      <p>Take any handful of positive numbers. From them you can build a little staircase: how many ways
+      to pick one, how many ways to pick two, three, and so on, each multiplied out and added up. Three
+      hundred years ago Newton noticed that this staircase never has a dent &mdash; every step is at least as
+      high as its neighbours predict. But he never said <i>how much</i> higher. It could be a hair. It could
+      be a lot.</p>
+      <p>We took one particular handful of numbers &mdash; a list that physicists use to decide whether a
+      certain model of gravity is allowed to exist &mdash; and measured the room exactly. It is four fifths.
+      Never less. And it can't be improved, because the staircase creeps down toward four fifths forever
+      without ever arriving. Then we tried the most ordinary list of all, 1, 2, 3, 4, &hellip; where a
+      statistician had guessed the answer in 1988 and nobody had checked. His guess is right almost
+      everywhere we looked, and we say exactly where we couldn't look.</p>
+    </div>
+    <div class="story">
+      <h3>Для друзей и детей (по-русски)</h3>
+      <p>Возьмите любую горсть положительных чисел. Из них можно сложить лесенку: сколькими способами
+      выбрать одно, сколькими &mdash; два, три и так далее, перемножив и сложив. Триста лет назад Ньютон
+      заметил, что у этой лесенки не бывает вмятин: каждая ступенька не ниже, чем предсказывают соседи.
+      Но он не сказал, <i>насколько</i> выше. Может, на волосок. Может, на много.</p>
+      <p>Мы взяли одну конкретную горсть чисел &mdash; список, по которому физики решают, может ли
+      существовать некая модель гравитации, &mdash; и измерили запас точно. Четыре пятых. Никогда меньше.
+      И лучше не сделать: лесенка вечно сползает к четырём пятым и никогда до них не доходит. Потом мы
+      взяли самый обычный список на свете, 1, 2, 3, 4, &hellip; где один статистик угадал ответ в 1988 году,
+      а проверить никто не проверил. Его догадка верна почти везде, куда мы смогли заглянуть, и мы честно
+      говорим, куда заглянуть не смогли.</p>
+    </div>
+  </div>
+  <div class="two" style="margin-top:22px">
+    <figure>
+      <img class="fig" src="variance_is_the_constant.svg" alt="The constant 4/5 is the relative variance of the square of a uniform variable.">
+      <figcaption>Why 4/5 and not some other number: it is the spread of the square of a uniform variable, relative to its mean &mdash; (1/5 &minus; 1/9)/(1/9). For the family <i>k<sup>p</sup></i> the same recipe gives <i>p</i>&sup2;/(2<i>p</i>+1).</figcaption>
+    </figure>
+    <figure>
+      <img class="fig" src="newton_excess_floor.svg" alt="The Newton excess at the tightest index, decreasing toward the floor 4/5.">
+      <figcaption>The tightest row, <i>t</i> = 1: the excess decreases toward 4/5 and never reaches it.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="links">
+    <a class="btn primary" href="https://github.com/AndreiPLK/newton-excess/blob/main/ARTICLE.md">Read the article</a>
+    <a class="btn" href="https://github.com/AndreiPLK/newton-excess">Code, logs &amp; reviews</a>
+    <a class="btn" href="https://github.com/AndreiPLK/newton-excess/blob/main/LIMITATIONS.md">Limitations</a>
+    <a class="btn" href="https://github.com/AndreiPLK/newton-excess/blob/main/AI_DISCLOSURE.md">AI disclosure</a>
+  </div>
+  <p class="small" style="margin-top:10px">A DOI will appear here the moment the Zenodo record is minted.</p>
+</section>
+
+<hr class="hair">
+<p class="foot">Honest status: Theorem A is a complete machine-checked proof, independently validated,
+awaiting human refereeing. Theorem B is proved in the ranges stated and open in the one region stated; the
+open region is recorded with the exact shape of the obstruction. We are an independent AI-assisted lab and
+would be glad to be corrected.</p>
+
+</div></div>
+</body></html>

@@ -128,13 +128,19 @@
 </style>
 <div class="layout">
 <aside class="side">
-  <div class="eyebrow" style="font-size:10.5px">Status &middot; 1 Sep 2026</div>
-  <p class="sfacts"><b>5 works published</b><br>
-  <b>newest: a conjecture with 1409 confirming cases</b> and none against &mdash; false<br>
-  <b>verified four independent ways</b>, one sharing no library with the rest<br>
-  <b>knife theorems: j = 2..13</b> proved<br>
-  <b>28 hypotheses</b> recorded as dead, and every failed route kept with its reason<br>
-  <b>227,040</b> exact counterexample checks, zero violations</p>
+  <div class="eyebrow" style="font-size:10.5px">Status &middot; 3 Sep 2026</div>
+  <p class="sfacts"><b>6 works</b>, newest released today<br>
+  <b>the 4/5 floor under Newton's inequality</b> &mdash; proved in full, sharp<br>
+  <b>Sibuya's 1988 conjecture</b> &mdash; proved over most of its range, one corner open and named<br>
+  <b>two adversarial reviews</b> on release day; one derivation repaired, reports published<br>
+  <b>4,705</b> certified grid steps, worst margin 1.9&times;10<sup>&minus;10</sup><br>
+  <b>every failed route</b> kept with its reason</p>
+
+  <a class="sthumb" href="works/newton-excess/">
+    <img src="assets/newton-floor-3d.svg" alt="The floor 4/5 under the Newton excess" style="background:#fff">
+    <span>The new result as terrain: the excess surface over every case, and the floor
+    4/5 beneath it. The lowest ridge settles onto the floor only at infinity.</span>
+  </a>
 
   <a class="sthumb" href="works/lab-note-2026-08-17/index.html">
     <img src="works/lab-note-2026-08-17/whole-story.png" alt="The shore of gravity">
@@ -149,9 +155,9 @@
   </a>
 
   <p class="sfacts" style="border-top:1px solid var(--rule);padding-top:10px">
-  <b>Open:</b> uniformity in the constraint index. Sign-definite loops exist above
-  j = 18; below it the certified region already covers the range. The two halves
-  are close to meeting.</p>
+  <b>Open:</b> one corner of Sibuya's conjecture, where the two sides of the inequality
+  agree to leading order. Not more computing &mdash; a new idea. The exact shape of the
+  obstruction is written down in the package.</p>
 
   <p class="sfacts"><a href="works/lab-note-2026-08-17/index.html">Full lab note,
   including every error caught &rarr;</a></p>
@@ -160,6 +166,34 @@
 <main style="display:flex;flex-direction:column;gap:40px;min-width:0">
 <section style="display:flex;flex-direction:column;gap:22px;">
     <h2 style="font-size:clamp(22px,2.4vw,30px);margin:0 0 4px">Published work</h2>
+
+    <article class="card">
+      <div class="body">
+        <span class="kind">preprint + machine-checked proof &middot; 2026-09-03</span>
+        <h2><a href="works/newton-excess/">A floor under Newton's inequality: four fifths, never less</a></h2>
+        <p>Newton said the staircase never has a dent; he never said by how much. For the list
+        of numbers that decides whether a deformed string amplitude stays physical, the margin
+        is exactly 4/5 &mdash; sharp, for every case, proved in five machine-checked pieces. And a
+        1988 conjecture nobody had cited in thirty-eight years, proved over most of its range,
+        with the open corner stated honestly. Two adversarial reviews on release day; one
+        derivation caught and repaired, both reports in the package.</p>
+        <div class="facts">
+          <span>2026-09</span>
+          <span>MIT</span>
+          <span>627-rung ladder + 3 certificates, each independently validated</span>
+          <span>Sibuya 1988: j &le; 1000, &theta; &le; 0.9, &le; 802 missing</span>
+        </div>
+        <div class="links">
+          <a class="btn primary" href="works/newton-excess/">Read the one-pager</a>
+          <a class="btn" href="https://github.com/AndreiPLK/newton-excess/blob/main/ARTICLE.md">Article</a>
+          <a class="btn" href="https://github.com/AndreiPLK/newton-excess">Code, logs &amp; reviews</a>
+        </div>
+      </div>
+      <a class="pic" href="works/newton-excess/" aria-label="Open the one-pager">
+        <img src="assets/newton-floor-3d.svg"
+             alt="The Newton excess surface over the (n,t) plane with the floor 4/5 drawn beneath it; the surface never dips through.">
+      </a>
+    </article>
 
     <article class="card">
   <div class="body">
