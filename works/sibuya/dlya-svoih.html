@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Задача, которая ждала тридцать восемь лет</title>
+<meta name="description" content="Что доказал Андрей Плужник и зачем это нужно. С картинками, простыми словами, для своих.">
+<style>
+  :root{
+    --ink:#1a1c20; --muted:#5f6873; --line:#e6e2da; --bg:#fdfcf9; --card:#fff;
+    --accent:#9a5b2c; --accent-soft:#f6efe6; --num:#1c5d99; --num2:#c26a3a;
+    --stroke:#c9c2b6;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ink:#eceef1;--muted:#a5adb8;--line:#2e2a26;--bg:#14130f;--card:#1c1a16;
+          --accent:#d9a06a;--accent-soft:#241f19;--num:#7cb3e8;--num2:#e2a276;--stroke:#4a443c;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:17px/1.72 Georgia,"Iowan Old Style","Times New Roman",serif;}
+  .wrap{max-width:700px;margin:0 auto;padding:52px 22px 100px}
+  header{margin-bottom:38px}
+  .kicker{font:600 13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+          letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h1{font-size:35px;line-height:1.16;margin:0 0 16px;letter-spacing:-.012em}
+  .sub{color:var(--muted);font-size:19px;margin:0;line-height:1.55}
+  h2{font-size:23px;margin:48px 0 14px;letter-spacing:-.005em}
+  p{margin:0 0 16px}
+  .lede{font-size:19px}
+  em{color:var(--accent);font-style:italic}
+  figure{margin:30px 0;padding:0}
+  figure svg{display:block;width:100%;height:auto}
+  figcaption{color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:10px;
+             font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .figbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px 16px}
+  .quote{border-left:3px solid var(--accent);padding:2px 0 2px 20px;margin:26px 0;color:var(--muted);
+         font-style:italic}
+  .card{background:var(--accent-soft);border-radius:14px;padding:22px 24px;margin:28px 0}
+  .card p:last-child{margin-bottom:0}
+  .big{font:600 21px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+       color:var(--ink);margin:26px 0}
+  a{color:var(--accent)}
+  footer{margin-top:62px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);
+         font-size:15px;line-height:1.6}
+  .refcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+           margin:28px 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .refcard .j{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  .refcard .ttl{font-size:17px;line-height:1.45;margin:0 0 8px;font-weight:600}
+  .refcard .meta{font-size:14.5px;color:var(--muted);margin:0 0 16px}
+  .refcard .said{font:italic 17px/1.6 Georgia,serif;color:var(--ink);border-left:3px solid var(--accent);
+                 padding-left:16px;margin:0}
+  .refcard .said span{display:block;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+                      color:var(--muted);margin-top:8px;font-style:normal}
+  .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Для своих · 7 сентября 2026 · <a href="index.html" style="color:inherit">in English</a></p>
+  <h1>Задача, которая ждала тридцать восемь лет</h1>
+  <p class="sub">Одна строчка в научной статье ждала тридцать восемь лет, пока кто-нибудь её докажет. Дождалась. Рассказываю, что в ней было, почему это оказалось трудно и зачем оно вообще нужно.</p>
+</header>
+
+<p class="lede">В 1988 году в японском научном журнале вышла статья на двадцать две страницы. На шестьсот девяносто девятой странице автор написал одно предложение: похоже, вот это верно, но доказать я не могу. И пошёл дальше по своему тексту.</p>
+
+<p>Предложение осталось лежать там на тридцать восемь лет. Чтобы понять, что в нём было, начнём с вопроса, который можно задать прямо за столом.</p>
+
+<p>Пришли гости. Сколько есть способов рассадить их за круглые столы? Не за один стол, а вообще: за один, за два, за три. Возьмём троих — их можно нарисовать целиком.</p>
+
+<figure class="figbox">
+<svg viewBox="0 0 700 300" role="img" aria-label="Все шесть способов рассадить троих гостей: два способа за одним столом, три за двумя столами, один за тремя.">
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13">
+
+    <!-- row 1: one table, 2 ways -->
+    <text x="14" y="58" fill="currentColor" opacity=".62">за одним столом</text>
+    <text x="14" y="76" fill="currentColor" font-weight="700" font-size="17">2 способа</text>
+    <g fill="none" stroke="var(--stroke)" stroke-width="1.6">
+      <circle cx="300" cy="62" r="26"/><circle cx="440" cy="62" r="26"/>
+    </g>
+    <g fill="var(--num)">
+      <circle cx="300" cy="36" r="5.5"/><circle cx="277" cy="75" r="5.5"/><circle cx="323" cy="75" r="5.5"/>
+      <circle cx="440" cy="36" r="5.5"/><circle cx="417" cy="75" r="5.5"/><circle cx="463" cy="75" r="5.5"/>
+    </g>
+    <g fill="currentColor" font-size="12" opacity=".85" text-anchor="middle">
+      <text x="300" y="24">А</text><text x="264" y="90">Б</text><text x="336" y="90">В</text>
+      <text x="440" y="24">А</text><text x="404" y="90">В</text><text x="476" y="90">Б</text>
+    </g>
+
+    <!-- row 2: two tables, 3 ways -->
+    <text x="14" y="163" fill="currentColor" opacity=".62">за двумя столами</text>
+    <text x="14" y="181" fill="currentColor" font-weight="700" font-size="17">3 способа</text>
+    <g fill="none" stroke="var(--stroke)" stroke-width="1.6">
+      <circle cx="272" cy="167" r="22"/><circle cx="330" cy="167" r="13"/>
+      <circle cx="410" cy="167" r="22"/><circle cx="468" cy="167" r="13"/>
+      <circle cx="548" cy="167" r="22"/><circle cx="606" cy="167" r="13"/>
+    </g>
+    <g fill="var(--num)">
+      <circle cx="250" cy="167" r="5.5"/><circle cx="294" cy="167" r="5.5"/><circle cx="330" cy="167" r="5.5"/>
+      <circle cx="388" cy="167" r="5.5"/><circle cx="432" cy="167" r="5.5"/><circle cx="468" cy="167" r="5.5"/>
+      <circle cx="526" cy="167" r="5.5"/><circle cx="570" cy="167" r="5.5"/><circle cx="606" cy="167" r="5.5"/>
+    </g>
+    <g fill="currentColor" font-size="12" opacity=".85" text-anchor="middle">
+      <text x="250" y="150">А</text><text x="294" y="150">Б</text><text x="330" y="146">В</text>
+      <text x="388" y="150">А</text><text x="432" y="150">В</text><text x="468" y="146">Б</text>
+      <text x="526" y="150">Б</text><text x="570" y="150">В</text><text x="606" y="146">А</text>
+    </g>
+
+    <!-- row 3: three tables, 1 way -->
+    <text x="14" y="262" fill="currentColor" opacity=".62">за тремя столами</text>
+    <text x="14" y="280" fill="currentColor" font-weight="700" font-size="17">1 способ</text>
+    <g fill="none" stroke="var(--stroke)" stroke-width="1.6">
+      <circle cx="290" cy="266" r="13"/><circle cx="350" cy="266" r="13"/><circle cx="410" cy="266" r="13"/>
+    </g>
+    <g fill="var(--num)">
+      <circle cx="290" cy="266" r="5.5"/><circle cx="350" cy="266" r="5.5"/><circle cx="410" cy="266" r="5.5"/>
+    </g>
+    <g fill="currentColor" font-size="12" opacity=".85" text-anchor="middle">
+      <text x="290" y="245">А</text><text x="350" y="245">Б</text><text x="410" y="245">В</text>
+    </g>
+  </g>
+</svg>
+<figcaption>Все шесть рассадок для троих гостей. За одним столом важно, кто по какую руку, поэтому способов два, а не один. Считая по строкам, получаем <b>2, 3, 1</b> — это и есть строчка нашего треугольника.</figcaption>
+</figure>
+
+<p>Для пяти гостей рисовать уже долго: рассадок сто двадцать. Но считаются они так же, и строчка выходит такая.</p>
+
+<figure class="figbox">
+<svg viewBox="0 -16 700 266" role="img" aria-label="Строка для пяти гостей: 24, 50, 35, 10, 1, нарисованная столбиками. Средний столбик в квадрате больше произведения соседей.">
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+    <g>
+      <rect x="70"  y="86"  width="66" height="104" rx="5" fill="var(--num)" opacity=".45"/>
+      <rect x="176" y="20"  width="66" height="170" rx="5" fill="var(--num2)"/>
+      <rect x="282" y="71"  width="66" height="119" rx="5" fill="var(--num)" opacity=".45"/>
+      <rect x="388" y="156" width="66" height="34"  rx="5" fill="var(--num)" opacity=".22"/>
+      <rect x="494" y="184" width="66" height="6"   rx="3" fill="var(--num)" opacity=".22"/>
+    </g>
+    <g fill="currentColor" font-weight="700" font-size="19" text-anchor="middle">
+      <text x="103" y="76">24</text><text x="209" y="10">50</text><text x="315" y="61">35</text>
+      <text x="421" y="146">10</text><text x="527" y="174">1</text>
+    </g>
+    <line x1="60" y1="190" x2="640" y2="190" stroke="var(--stroke)" stroke-width="1.5"/>
+    <g fill="currentColor" font-size="12" opacity=".6" text-anchor="middle">
+      <text x="103" y="209">1 стол</text><text x="209" y="209">2 стола</text><text x="315" y="209">3 стола</text>
+      <text x="421" y="209">4 стола</text><text x="527" y="209">5 столов</text>
+    </g>
+    <g font-size="15" text-anchor="middle">
+      <text x="209" y="238" fill="var(--num2)" font-weight="700">50 × 50 = 2500</text>
+      <text x="430" y="238" fill="currentColor" opacity=".75">больше, чем соседи вместе: 24 × 35 = 840</text>
+    </g>
+  </g>
+</svg>
+<figcaption>Пять гостей. Оранжевый столбик, умноженный сам на себя, больше произведения двух соседей. И так в любом месте любой такой строки — это заметил Ньютон в 1707 году.</figcaption>
+</figure>
+
+<p>Кстати, сложите эту строку: 24 плюс 50 плюс 35 плюс 10 плюс один — сто двадцать. Ровно столько же, сколько способов выстроить пятерых в очередь. Так устроен весь треугольник: каждая строка в сумме даёт число способов переставить гостей местами. Ничего не теряется и не появляется — просто одно и то же считают по-разному.</p>
+
+<h2>А насколько больше?</h2>
+
+<p>Вот здесь всё и начинается. Ньютон сказал только «больше». Он не сказал, на сколько.</p>
+
+<p>Разница есть. Если числа сначала аккуратно выровнять — а математики это умеют, чтобы сравнивать честно, — запас становится очень маленьким. Не в два раза, не на треть. Проценты.</p>
+
+<p>В 1988 году японский профессор <em>Масааки Сибуя</em> посчитал этот запас на компьютере для многих строк и увидел закономерность. Он написал формулу: запас никогда не меньше вот такой величины, и она зависит только от длины строки и от того, в каком месте вы стоите. Для нашей строки из пяти гостей в самом узком месте запас ровно <em>одна четырнадцатая</em> — семь процентов. И ни на волос меньше.</p>
+
+<p>А потом он честно написал в статье: доказать не могу. Дословно — «численно предполагается».</p>
+
+<div class="quote">Он не поставил номера теоремы. Он не вернулся к этой фразе ни разу до конца статьи. Он просто оставил её лежать.</div>
+
+<h2>Кто это написал</h2>
+
+<p>Масааки Сибуя — японский статистик, профессор университета Кэйо в Токио, потом Такатихо. Занимался тем, как ведут себя редкие события и крайние значения: наводнения, рекорды, выбросы. Человек уважаемый настолько, что в 2021 году в его честь вышел отдельный сборник статей — такое делают не всем.</p>
+
+<p>Статья, о которой речь, вышла в 1988 году и была совсем не про наши числа целиком. Он разбирал, как устроены распределения, связанные с этими числами, доказал несколько утверждений — и по дороге заметил закономерность, которую доказать не смог. Написал про неё одно предложение и пошёл дальше.</p>
+
+<div class="refcard">
+  <p class="j">Первоисточник</p>
+  <p class="ttl">Log-concavity of Stirling numbers and unimodality of Stirling distributions</p>
+  <p class="meta">M. Sibuya · Annals of the Institute of Statistical Mathematics, том 40, № 4 (1988), с. 693–714 · интересующая нас фраза на странице 699, формула (3.4)</p>
+  <p class="said">«Численно предполагается, что последовательность … строго убывает».
+  <span>Мы читали эту страницу с картинки скана: распознанный текст портит все формулы, поэтому смотрели на саму страницу, как её напечатали в 1988 году.</span></p>
+</div>
+
+<p>Вот эта одна фраза и есть всё, что от него осталось на нашем пути. Ни доказательства, ни попытки, ни даже номера — просто наблюдение, оставленное на странице.</p>
+
+<p>И она пролежала тридцать восемь лет. Люди читали его статью, ссылались на неё, пользовались тем, что он доказал, — и проходили мимо того, что он не доказал.</p>
+
+<h2>Почему это оказалось трудно</h2>
+
+<p>Обычно с такими вещами борются грубой силой: доказал с запасом — и хорошо, пусть запас будет вдвое, всё равно достаточно. Здесь так нельзя, и вот почему.</p>
+
+<p>Оценка Сибуя <em>не с запасом, а впритык</em>. В каждой строке есть ровно одно место, где она достигается точно, — там неравенство превращается в равенство. Ни туда, ни сюда. Значит доказательство не имеет права нигде округлить в свою пользу, ни разу за весь путь. Один щедрый шаг — и всё разваливается.</p>
+
+<p>Мы, кстати, сначала пошли не туда. Спросили совета у крупного специалиста, он предложил естественный подход, и подход не сработал. Причём мы смогли доказать, что он <em>не может</em> сработать: в том самом узком месте не остаётся ни капли запаса. Это тоже результат, просто неприятный.</p>
+
+<h2>Как решилось</h2>
+
+<p>Через два приёма, каждый из которых сам по себе старый и известный.</p>
+
+<figure class="figbox">
+<svg viewBox="0 0 700 260" role="img" aria-label="Три этапа: корни многочлена сжимаются к своей середине, шаг за шагом, пока их не остаётся два.">
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13">
+    <!-- stage 1 -->
+    <line x1="120" y1="52" x2="620" y2="52" stroke="var(--stroke)" stroke-width="1.5"/>
+    <g fill="var(--num)">
+      <circle cx="150" cy="52" r="7"/><circle cx="238" cy="52" r="7"/><circle cx="316" cy="52" r="7"/>
+      <circle cx="424" cy="52" r="7"/><circle cx="512" cy="52" r="7"/><circle cx="600" cy="52" r="7"/>
+    </g>
+    <text x="14" y="57" fill="currentColor" opacity=".62">было</text>
+
+    <!-- stage 2 -->
+    <line x1="120" y1="140" x2="620" y2="140" stroke="var(--stroke)" stroke-width="1.5"/>
+    <g fill="var(--num)" opacity=".85">
+      <circle cx="238" cy="140" r="7"/><circle cx="300" cy="140" r="7"/>
+      <circle cx="372" cy="140" r="7"/><circle cx="440" cy="140" r="7"/><circle cx="512" cy="140" r="7"/>
+    </g>
+    <text x="14" y="145" fill="currentColor" opacity=".62">после</text>
+    <text x="14" y="162" fill="currentColor" opacity=".62">одного шага</text>
+
+    <!-- stage 3 -->
+    <line x1="120" y1="222" x2="620" y2="222" stroke="var(--stroke)" stroke-width="1.5"/>
+    <g fill="var(--num2)">
+      <circle cx="336" cy="222" r="8"/><circle cx="414" cy="222" r="8"/>
+    </g>
+    <text x="14" y="227" fill="currentColor" opacity=".62">в конце</text>
+
+    <!-- the fixed middle -->
+    <line x1="375" y1="30" x2="375" y2="244" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".8"/>
+    <text x="375" y="22" fill="var(--accent)" text-anchor="middle" font-weight="700">середина не двигается</text>
+
+    <!-- arrows -->
+    <g stroke="var(--accent)" stroke-width="1.6" opacity=".55" marker-end="url(#a)">
+      <line x1="163" y1="70" x2="222" y2="120"/><line x1="587" y1="70" x2="528" y2="120"/>
+      <line x1="250" y1="158" x2="320" y2="204"/><line x1="500" y1="158" x2="430" y2="204"/>
+    </g>
+    <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)" opacity=".55"/></marker></defs>
+  </g>
+</svg>
+<figcaption>У строчки чисел есть невидимый двойник — точки на прямой. Один известный приём сдвигает эти точки к их общей середине, и сдвигает <b>ровно в такое-то число раз</b>, не примерно. Повторяя его, доходим до двух точек. А для двух точек всё видно невооружённым глазом.</figcaption>
+</figure>
+
+<p>Второй приём — зеркальный: если строчку перевернуть задом наперёд, точки превращаются в обратные величины, и первый приём начинает работать с другого конца. Двух приёмов хватает, чтобы любое место длинной строки свести к паре чисел.</p>
+
+<p>А дальше остаётся перебраться от строки к строке — от пяти гостей к шести, от шести к семи, и так без конца, одним и тем же рассуждением. В математике это называется индукцией: способ доказать сразу для всех случаев, не проверяя ни одного лишнего.</p>
+
+<div class="card">
+  <p><strong>Самое главное — это можно проверить.</strong> Доказательство читается руками, на бумаге, страницы за две. Компьютер нужен ровно в двух местах и на одну секунду: пересчитать несколько маленьких случаев. Всё остальное — рассуждение, которое любой математик разберёт сам, ничего не запуская.</p>
+</div>
+
+<h2>Зачем это всё</h2>
+
+<p>Скажу честно, без прикрас: завтра от этого ничего не подешевеет и никто не выздоровеет. Это не то знание. Но есть три вещи, ради которых стоило.</p>
+
+<p class="big">Первая. Доказанное не устаревает.</p>
+
+<p>Почти всё, что мы знаем, — временное. Медицина себя пересматривает, физика себя пересматривает, история переписывается. Математика — единственное место, где сказанное однажды остаётся сказанным навсегда. То, что Ньютон заметил про эти числа в 1707 году, верно сегодня и будет верно через тысячу лет, при любой власти и любой погоде. Теперь рядом с его фразой стоит ещё одна, и она тоже никуда не денется.</p>
+
+<p class="big">Вторая. Страница рассуждения обгоняет любой компьютер.</p>
+
+<p>Мы проверили эту закономерность перебором — сто девятнадцать тысяч случаев, до строк в шестнадцать тысяч гостей. Это ничто. В строке для тысячи гостей самое большое число состоит из <em>двух тысяч пятисот шестидесяти семи цифр</em>. Строку для миллиона не выпишет никто и никогда: не хватит ни бумаги, ни времени, ни машин.</p>
+
+<figure class="figbox">
+<svg viewBox="0 0 700 130" role="img" aria-label="Полоска: крошечный проверенный отрезок и бесконечная стрелка доказанного.">
+  <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13">
+    <rect x="30" y="52" width="34" height="26" rx="4" fill="var(--num2)"/>
+    <line x1="64" y1="65" x2="646" y2="65" stroke="var(--num)" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+    <path d="M646,52 L672,65 L646,78 z" fill="var(--num)" opacity=".55"/>
+    <text x="30" y="42" fill="var(--num2)" font-weight="700">проверено перебором</text>
+    <text x="30" y="102" fill="currentColor" opacity=".62">119 тысяч случаев</text>
+    <text x="360" y="42" fill="var(--num)" font-weight="700" text-anchor="middle">доказано</text>
+    <text x="360" y="102" fill="currentColor" opacity=".62" text-anchor="middle">все строки, любой длины, до бесконечности</text>
+  </g>
+</svg>
+<figcaption>Оранжевый кусочек — всё, что можно потрогать машиной. Синяя стрелка — то, что накрывает доказательство. Между ними не разница в размере, а разница в природе.</figcaption>
+</figure>
+
+<p>И тем не менее про все эти строки — включая те, которых никто никогда не увидит, — теперь известно точно. Не «скорее всего», не «во всех проверенных случаях». Точно. Вот это и есть та странная сила, ради которой математикой занимаются.</p>
+
+<p class="big">Третья, и, может быть, главная. Дырка на карте закрыта — и закрыл её один человек.</p>
+
+<p>В математике очень мало задач, у которых есть <em>имя, дата и номер страницы</em>. Кто-то однажды подошёл к краю, сказал «мне кажется, там дальше вот так», не смог перейти и оставил зарубку. Такие зарубки сами не зарастают. Их или закрывают, или они стоят десятилетиями.</p>
+
+<p>Эту закрыл один человек у себя дома, вместе с машиной. Без института, без кафедры, без гранта, без коллектива. И это, честно говоря, интереснее самой теоремы: она про числа, а это — про то, что стало возможным.</p>
+
+<h2>Что дальше</h2>
+
+<p>Работа уходит в тот самый японский журнал, где Сибуя её и напечатал в 1988 году. Там эту задачу знают и узнают с первой строки.</p>
+
+<p>Дальше её будут читать живые люди, и это важная оговорка: <em>пока ни один математик её не рецензировал</em>. Проверяли мы сами, очень придирчиво и в несколько независимых заходов — но это не то же самое, что вердикт постороннего специалиста. Пока журнал не ответит, правильно говорить так: доказательство есть, оно открыто лежит, и каждый может его разобрать.</p>
+
+<p>И ещё одно. В той же самой фразе 1988 года Сибуя предположил вторую такую же вещь, про соседний треугольник чисел. Её тоже почти никто не трогал. Ею и займёмся.</p>
+
+<footer>
+  <p>Андрей Плужник, сентябрь 2026. Работа сделана одним человеком вместе с искусственным интеллектом; всё, что мы делали, включая ошибки и тупики, выложено открыто, чтобы любой мог проверить каждый шаг.</p>
+  <p><a href="figure.html">Посмотреть точный график: что обещал Сибуя и что там на самом деле</a></p>
+</footer>
+
+</div>
+</body>
+</html>

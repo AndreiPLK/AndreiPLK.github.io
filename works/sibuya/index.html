@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sibuya's 1988 conjecture, proved — Andrey Pluzhnik</title>
+<meta name="description" content="A 1988 conjecture of M. Sibuya on Stirling numbers of the first kind, open for 38 years, proved by induction with two positive certificates. Every step checkable.">
+<style>
+  :root{
+    --ink:#15171a; --muted:#5b6570; --line:#e3e6ea; --bg:#fbfbfc; --card:#fff;
+    --accent:#1c5d99; --accent-soft:#eef4fa; --good:#1c7a4a; --warn:#8a6d1f;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ink:#e8eaed;--muted:#a2acb8;--line:#2a2f36;--bg:#101317;--card:#171b21;
+          --accent:#7cb3e8;--accent-soft:#17222e;--good:#6bcf9b;--warn:#d9bb63;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 22px 90px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:34px}
+  .kicker{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  h1{font-size:31px;line-height:1.22;margin:0 0 14px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:17px;margin:0}
+  h2{font-size:20px;margin:40px 0 12px;letter-spacing:-.005em}
+  h3{font-size:16px;margin:26px 0 8px}
+  p{margin:0 0 14px}
+  .lede{font-size:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:22px 0}
+  .formula{background:var(--accent-soft);border:1px solid var(--line);border-radius:10px;
+           padding:18px 20px;margin:18px 0;font-family:var(--mono);font-size:15px;overflow-x:auto}
+  .formula .note{display:block;margin-top:10px;font-family:inherit;font-size:13px;color:var(--muted)}
+  code{font-family:var(--mono);font-size:14px;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+  pre{background:var(--accent-soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+      overflow-x:auto;font-family:var(--mono);font-size:13.5px;margin:14px 0}
+  ul{margin:0 0 14px;padding-left:22px} li{margin:0 0 8px}
+  a{color:var(--accent)}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:.03em;text-transform:uppercase}
+  td.num{font-family:var(--mono)}
+  .status{display:inline-block;font-size:12.5px;padding:2px 9px;border-radius:20px;border:1px solid var(--line);
+          color:var(--muted);margin-right:6px}
+  .status.ok{color:var(--good);border-color:currentColor}
+  .status.open{color:var(--warn);border-color:currentColor}
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  .fig{margin:26px 0}
+  .fig svg{width:100%;height:auto;display:block}
+  .caption{color:var(--muted);font-size:13.5px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Result · 7 September 2026 · <a href="dlya-svoih.html" style="color:inherit">по-русски, для своих</a></p>
+  <h1>A conjecture from 1988, proved</h1>
+  <p class="sub">Masaaki Sibuya wrote down an inequality about Stirling numbers, said the computer suggested it was true, and left it. Nobody proved it for thirty-eight years. Here is a proof, and every step of it can be checked.</p>
+</header>
+
+<p class="lede">Take the numbers that count how many ways you can seat <em>n</em> people at <em>k</em> round tables. Line up one row of them, normalise, and ask how far each entry sits above the geometric mean of its two neighbours. Newton's inequality, from 1707, says the gap is never negative. Sibuya's conjecture says exactly how big it is.</p>
+
+<div class="formula">
+  p<sub>j</sub><sup>2</sup> / (p<sub>j−1</sub> · p<sub>j+1</sub>) ≥ 1 + 1 / (3n − j)
+  <span class="note">Sibuya 1988, Ann. Inst. Statist. Math. 40, page 699, equation (3.4). Strict for j ≥ 2; an exact identity at j = 1.</span>
+</div>
+
+<div class="fig">
+  <p style="margin:0 0 10px"><a href="figure.html">Open the figure: what the bound promised, and what is actually there &rarr;</a></p>
+  <p class="caption" style="margin-top:0">Two panels, built from exact rational numbers: one row of the triangle with the true margin against the conjectured floor, and the same comparison for rows of three different lengths.</p>
+</div>
+
+<h2>Why it stayed open</h2>
+
+<p>Newton's inequality cannot be improved in general. Given any three numbers that satisfy it, a real polynomial exists with exactly those three coefficients in place, so no universal strengthening is possible. Any true improvement has to know which family it is talking about. Sibuya's does: it is a statement about one specific triangle of integers, and it is sharp, touching equality at the end of every row.</p>
+
+<p>That sharpness is what makes it awkward. A proof cannot afford to be generous anywhere, and the usual combinatorial move for such inequalities — find a way to map one set of objects into another — provably cannot work here. We tried it first, on the advice of a combinatorialist, and it failed for a reason that can be written down: the extra term eats the entire margin at the very index where the inequality becomes an equality.</p>
+
+<h2>The proof, in one paragraph</h2>
+
+<p>Differentiating a polynomial with real roots leaves the average of its roots alone and shrinks their spread by a factor you can write down exactly. Reversing the polynomial turns the roots into their reciprocals, and doing the same thing there gives a second, mirror-image law. Applying both operations until only two roots are left turns a statement about one entry of the row into a statement about the gap between two numbers — and there the inequality becomes visible. Running that reduction over the whole row gives an induction on the length of the row. The step needs one application of Cauchy's inequality and two polynomials whose coefficients all turn out to be positive, which is what makes the argument uniform: no threshold, no case that grows with the row.</p>
+
+<div class="card">
+  <h3 style="margin-top:0">What a reader has to take on trust</h3>
+  <p style="margin-bottom:0">Two finite checks, and nothing else: the base of the induction for rows of length at most three, and one harmonic-number inequality for lengths up to 34. Both are exact integer arithmetic and both run in under a second. Everything else is an argument on paper.</p>
+</div>
+
+<h2>How it was checked</h2>
+
+<p>Nothing here is true because one program said so. The proof was re-derived twice, independently, by workers who never read the author's code:</p>
+
+<ul>
+  <li><strong>On a different engine and a different formulation.</strong> One re-derivation ran the algebra in a second computer-algebra system and cleared every denominator to integers, so a library bug would have to occur twice, in two different libraries, to slip through.</li>
+  <li><strong>Against a false neighbour.</strong> The decisive test: the same certificate machinery was pointed at a nearby statement that is <em>false</em>. Its certificate collapsed, with coefficients going negative. A certificate that cannot tell a true statement from a nearly-true one proves nothing; this one can.</li>
+  <li><strong>With the hypotheses stretched to breaking.</strong> The induction step was fed inputs where every assumption holds with equality. It still concludes — so it is not living off the slack of comfortable numbers.</li>
+  <li><strong>By brute force.</strong> 118 927 cases in exact integers, with no floating point anywhere near a decision. One equality per row, always in the same place. No violations.</li>
+  <li><strong>Against the original paper.</strong> The 1988 article was read at the source, from page images, because the scanned text layer garbles every formula. The translation between Sibuya's printed sequence and the form proved here was verified on 1 693 pairs of indices rather than asserted.</li>
+</ul>
+
+<h2>Status, plainly</h2>
+
+<p>
+  <span class="status ok">Proved</span> the inequality, for every row and every index.<br>
+  <span class="status ok">Checked</span> by two independent re-derivations of different kinds, plus the priority search at the primary source.<br>
+  <span class="status open">Not yet refereed</span> — no journal has reviewed this. Until one does, it is a proof on the public record, not an accepted theorem.
+</p>
+
+<h2>Credit where it is due</h2>
+
+<p>The two operations the reduction rests on are classical, and are cited as such: they appear as Lemmas 2.2 and 2.3 in Niculescu's 2000 note on Newton's inequalities. The fact that Newton's inequality admits no universal improvement is Lévy's, recorded by Pitman. What is new here is the induction and the two certificates — not the tools.</p>
+
+<h2>A companion, still open</h2>
+
+<p>In the same sentence, Sibuya conjectured the sibling statement for Stirling numbers of the <em>second</em> kind. It has been left alone just as long. It is true for every row we have checked. That one is next.</p>
+
+<footer>
+  <p>Andrey Pluzhnik · ORCID <a href="https://orcid.org/0009-0005-5660-2603">0009-0005-5660-2603</a></p>
+  <p>Paper, certificates, logs and both independent validations are archived and citable. The work was done with AI assistance, disclosed in full in the archive.</p>
+</footer>
+
+</div>
+</body>
+</html>
